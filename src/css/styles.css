@@ -16,6 +16,10 @@ hr {
   margin-right: 70px;
 }
 
+table {
+  border-width: 
+}
+
 .btn-block {
   background: rgb(50, 159, 214) !important;
   background-color: rgb(50, 159, 214) !important;
@@ -34,6 +38,16 @@ hr {
 .btn-theme-color {
   color: white !important;
   background-color: #329fd6 !important;
+}
+
+.start-hidden {
+  display: none;
+}
+
+.separator-wrapper {
+  width: 30px !important;
+  max-width: 30px !important;
+  padding-right: 50px !important;
 }
 
 .separator {
@@ -77,4 +91,9 @@ hr {
 
 .right-col-top-margin {
   margin-top: 180px;
+}
+
+.overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
