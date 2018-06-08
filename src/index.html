@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#333333">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <title>GS1 Digital Link Tool</title>
+  </head>
+  <body>
+    <!-- App Content -->
+    <div class="container-fluid fill">
+      <!-- Main experience -->
+      <div class="row mt-3 ml-2 fill">
+        <!-- LEFT COLUMN-->
+        <div class="col-md-6">
+          <!-- Headings -->
+          <div class="row mt-3">
+            <div class="col">
+              <h2 >Create Your GS1 Digital Link</h2>
+              <div class="blue-underline"></div>
+            </div>
+          </div>
+
+          <!-- Input form -->
+          <div class="row mt-4">
+            <div class="col">
+              <div class="form-group">
+                <span class="bold">CHOOSE YOUR DOMAIN</span>
+                <select id="select_domain" class="form-control w-50">
+                  <option value="tngg">tn.gg (EVRYTHNG)</option>
+                  <option value="idgs1">id.gs1.org (Canonical)</option>
+                  <option vallue="custom">Custom domain...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <div class="form-group">
+                <span class="bold">CHOOSE YOUR FORMAT</span>
+                <div class="form-check mt-2">
+                  <input id="check_format_alphanumeric" class="form-check-input" type="radio" name="format_radio" value="alphanumeric" checked>
+                  <label class="form-check-label" for="check_format_alphanumeric">Use letters where possible</label>
+                  <span class="italic light-grey"> (Alphanumeric)</span>
+                </div>
+                <div class="form-check">
+                  <input id="check_format_numeric" class="form-check-input" type="radio" name="format_radio" value="numeric">
+                  <label class="form-check-label" for="check_format_numeric">Use only numbers</label>
+                  <span class="italic light-grey"> (Numeric)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group w-50">
+                <span class="bold">CHOOSE YOUR IDENTIFIER</span>
+                <select id="select_identifier" class="form-control">
+                  <option value="gtin">Gloabl Trade Item Number (GTIN)</option>
+                </select>
+              </div>
+              <div class="w-50">
+                <input id="text_identifier_value" type="text" class="form-control" placeholder="Enter identifier value">
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <div class="form-check">
+                <input id="check_key_qualifiers" type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="check_key_qualifiers">Specify key qualifiers</label>
+              </div>
+              <div class="form-check">
+                <input id="check_data_attributes" type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="check_data_attributes">Specify data attributes</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="col-md-1">
+          <div class="separator"></div>
+        </div>
+
+        <!-- RIGHT COLUMN-->
+        <div class="col-md-5">
+          <div class="row right-col-top-margin">
+            <div class="col text-center">
+              <span class="text-center">YOUR GS1 DIGITAL LINK</span><br/>
+              <span id="span_digital_link" class="mt-2 text-center digital-link">
+                https://domain/identifier/XXXXXXXXXXXX/qualifiers/XXXX?attributes=XXX
+              </span>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col text-center">
+              <img id="img_qr_code" class="qr-code" src="./assets/qr_placeholder.png">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col text-center">
+              <a href="#" class="text-center theme-color">Customize QR code</a>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col text-center">
+              <a id="a_experience" class="btn btn-secondary btn-lg btn-theme-color active" role="button">CREATE A CUSTOM EXPERIENCE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Material Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+    <!-- EVRYTHNG -->
+    <script type="text/javascript" src="scripts/index.js"></script>
+  </body>
+</html>

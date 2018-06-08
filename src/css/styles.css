@@ -1,0 +1,80 @@
+body {
+  background-color: white !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans Pro' !important;
+  color: #555 !important;
+}
+
+hr {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.btn-block {
+  background: rgb(50, 159, 214) !important;
+  background-color: rgb(50, 159, 214) !important;
+  color: white;
+}
+
+.qr-code {
+  width: 200px;
+  height: auto;
+}
+
+.theme-color {
+  color: #329fd6 !important;
+}
+
+.btn-theme-color {
+  color: white !important;
+  background-color: #329fd6 !important;
+}
+
+.separator {
+  height: 90% !important;
+  min-height: 90% !important;
+  margin-top: 30px; 
+  width: 2px;
+  background-color: #BBB;
+  color: white;
+}
+
+.digital-link {
+  color: black;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.fill {
+  height: 100%;
+  min-height: 100%;
+}
+
+.blue-underline {
+  background-color: #3b7bda;
+  min-height: 5px;
+  height: 5px;
+  width: 60%;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.light-grey {
+  color: #AAA;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.right-col-top-margin {
+  margin-top: 180px;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "gs1-digital-link-tool",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "cd src && python -m SimpleHTTPServer"
+  },
+  "author": "EVRYTHNG",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
+}
