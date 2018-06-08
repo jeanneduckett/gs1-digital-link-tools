@@ -14,7 +14,7 @@ const addRowToTable = (table, item) => {
   const labelCell = row.insertCell(0);
   labelCell.innerHTML = `<span class="overflow">${maxLength(label)}</span><span class="italic light-grey"> (${ai})</span>`;
   const valueCell = row.insertCell(1);
-  valueCell.innerHTML = `<input id="${getInputIdFromGS1AI(ai)}" type="text" class="ml-2">`;
+  valueCell.innerHTML = `<input id="${getInputIdFromGS1AI(ai)}" type="text" class="form-control ml-2">`;
 
   // Listen for value input
   const rowInput = document.getElementById(getInputIdFromGS1AI(item.ai));
@@ -31,7 +31,11 @@ const setRowVisible = (row, state) => {
   row.style.display = state ? 'block' : 'none';
 };
 
-const searchAiList = query => AI_LIST.filter(n => n.label.includes(query) || n.ai === query);
+const searchAiList = (query) => {
+  if (!query) return [];
+
+  return AI_LIST.filter(item => item.label.toLowerCase().includes(query) || item.ai === query);
+};
 
 const setupUI = () => {
   const checkQualifiers = document.getElementById('check_key_qualifiers');
@@ -39,18 +43,18 @@ const setupUI = () => {
   const checkGS1Attributes = document.getElementById('check_gs1_data_attributes');
   checkGS1Attributes.onclick = () => setVisible('div_gs1_data_attributes_group', checkGS1Attributes.checked);
 
+  // Add rows to GS1 Data Attributes table
   const table = document.getElementById('table_gs1_data_attributes');
   AI_LIST.forEach(item => addRowToTable(table, item));
 
+  // Setup attribute search
   const inputSearchAiList = document.getElementById('input_search_ai_list');
   inputSearchAiList.oninput = () => {
-    const query = inputSearchAiList.value;
-    const results = searchAiList(query);
-
     // Hide all, unless they have a value
     AI_LIST.forEach(item => setRowVisible(item.row, item.value));
 
     // Show those that matched the query
+    const results = searchAiList(inputSearchAiList.value);
     results.forEach(item => setRowVisible(item.row, true));
   };
 };

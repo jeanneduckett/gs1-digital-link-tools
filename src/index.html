@@ -35,7 +35,7 @@
             <div class="col">
               <div class="form-group">
                 <span class="bold">CHOOSE YOUR DOMAIN</span>
-                <select id="select_domain" class="form-control w-50">
+                <select id="select_domain" class="form-control w-50 ml-4">
                   <option value="tngg">tn.gg (EVRYTHNG)</option>
                   <option value="idgs1">id.gs1.org (Canonical)</option>
                   <option vallue="custom">Custom domain...</option>
@@ -47,12 +47,12 @@
             <div class="col">
               <div class="form-group">
                 <span class="bold">CHOOSE YOUR FORMAT</span>
-                <div class="form-check mt-2">
+                <div class="form-check mt-2 ml-4">
                   <input id="check_format_alphanumeric" class="form-check-input" type="radio" name="format_radio" value="alphanumeric" checked>
                   <label class="form-check-label" for="check_format_alphanumeric">Use letters where possible</label>
                   <span class="italic light-grey"> (Alphanumeric)</span>
                 </div>
-                <div class="form-check">
+                <div class="form-check ml-4">
                   <input id="check_format_numeric" class="form-check-input" type="radio" name="format_radio" value="numeric">
                   <label class="form-check-label" for="check_format_numeric">Use only numbers</label>
                   <span class="italic light-grey"> (Numeric)</span>
@@ -62,13 +62,13 @@
           </div>
           <div class="row">
             <div class="col">
-              <div class="form-group w-50">
+              <div class="form-group w-50 ml-4">
                 <span class="bold">CHOOSE YOUR IDENTIFIER</span>
                 <select id="select_identifier" class="form-control">
                   <option value="gtin">Global Trade Item Number (GTIN)</option>
                 </select>
               </div>
-              <div class="w-50">
+              <div class="w-50 ml-4">
                 <input id="input_identifier_value" type="text" class="form-control" placeholder="Enter identifier value">
               </div>
             </div>
@@ -78,21 +78,21 @@
               <!-- Key qualifiers -->
               <div class="form-check mt-2">
                 <input id="check_key_qualifiers" type="checkbox" class="form-check-input">
-                <label class="form-check-label" for="check_key_qualifiers">Specify key qualifiers</label>
+                <label class="bold" for="check_key_qualifiers">SPECIFY KEY QUALIFIERS</label>
               </div>
               <div id="div_key_qualifiers_group" class="start-hidden ml-4">
                 <table>
                   <tr>
                     <td><span>Consumer product variant</span><span class="italic light-grey"> (22)</span></td>
-                    <td><input id="input_cpv" type="text" class="ml-2"></td>
+                    <td><input id="input_cpv" type="text" class="form-control ml-2"></td>
                   </tr>
                   <tr>
                     <td><span>Batch or lot number</span><span class="italic light-grey"> (10)</span></td>
-                    <td><input id="input_batch_lot" type="text" class="ml-2"></td>
+                    <td><input id="input_batch_lot" type="text" class="form-control ml-2"></td>
                   </tr>
                   <tr>
                     <td><span>Serial number</span><span class="italic light-grey"> (21)</span></td>
-                    <td><input id="input_serial_number" type="text" class="ml-2"></td>
+                    <td><input id="input_serial_number" type="text" class="form-control ml-2"></td>
                   </tr>
                 </table>
               </div>
@@ -100,7 +100,7 @@
               <!-- GS1 data attributes -->
               <div class="form-check mt-2">
                 <input id="check_gs1_data_attributes" type="checkbox" class="form-check-input">
-                <label class="form-check-label" for="check_gs1_data_attributes">Specify GS1 data attributes</label>
+                <label class="bold" for="check_gs1_data_attributes">SPECIFY GS1 DATA ATTRIBUTES</label>
               </div>
               <div id="div_gs1_data_attributes_group" class="start-hidden ml-4">
                 <div class="w-50">
@@ -114,7 +114,7 @@
               <!-- Custom data attributes -->
               <div class="form-check mt-2">
                 <input id="check_custom_data_attributes" type="checkbox" class="form-check-input">
-                <label class="form-check-label" for="check_custom_data_attributes">Specify custom data attributes</label>
+                <label class="bold" for="check_custom_data_attributes">SPECIFY CUSTOM DATA ATTRIBUTES</label>
               </div>
             </div>
           </div>
@@ -130,7 +130,11 @@
           <div class="row right-col-top-margin">
             <div class="col text-center">
               <span class="text-center">YOUR GS1 DIGITAL LINK</span><br/>
-              <span id="span_digital_link" class="mt-2 text-center digital-link">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center mt-3">
+              <span id="span_digital_link" class="digital-link">
                 https://domain/identifier/XXXXXXXXXXXX/qualifiers/XXXX?attributes=XXX
               </span>
             </div>

@@ -32,12 +32,12 @@ table {
 }
 
 .theme-color {
-  color: #329fd6 !important;
+  color: #3b7bda !important;
 }
 
 .btn-theme-color {
   color: white !important;
-  background-color: #329fd6 !important;
+  background-color: #3b7bda !important;
 }
 
 .start-hidden {
@@ -91,9 +91,4 @@ table {
 
 .right-col-top-margin {
   margin-top: 180px;
-}
-
-.overflow {
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
