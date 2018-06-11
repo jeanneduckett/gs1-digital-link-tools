@@ -15,7 +15,6 @@ const get = id => document.getElementById(id);
 const truncate = str => (str.length < MAX_LENGTH) ? str : `${str.substring(0, MAX_LENGTH - 2)}...`;
 
 const setVisible = (id, state) => {
-  console.log(id)
   get(id).style.display = state ? 'block' : 'none';
 };
 
@@ -32,11 +31,7 @@ const updateQrCode = () => {
   // Don't request for every keystroke
   if (qrFetchTimeout) clearTimeout(qrFetchTimeout);
 
-  qrFetchTimeout = setTimeout(() => {
-    qrFetchTimeout = null;
-
-    generateQrCode();  
-  }, QR_TIMEOUT);
+  qrFetchTimeout = setTimeout(generateQrCode, QR_TIMEOUT);
 };
 
 const updateDigitalLink = () => {
@@ -57,40 +52,45 @@ const updateDigitalLink = () => {
   });
 
   // Query params present?
-  const queryParams = AI_LIST.reduce((result, item) => {
-    if (result) return result;
-
-    return get(getIdFromAICode(item.code)).value;
-  }, false);
-  if (queryParams) digitalLink += '?';
+  const queryParams = AI_LIST.some(item => get(getIdFromAICode(item.code)).value);
 
   // GS1 Data Attributes
+  if (queryParams) {
+    digitalLink += '?';
+
+    // Key-value pairs
+    const usedDataAttributes = AI_LIST.filter(item => item.value);
+    usedDataAttributes.forEach((item, i) => {
+      if (i !== 0) digitalLink += '&';
+      digitalLink += `${item.code}=${item.value}`;
+    });
+  }
 
   // Update UI
   get('span_digital_link').innerHTML = digitalLink;
   updateQrCode();
 };
 
-const addAttributeRow = (table, item, generator) => {
+const insertAttributeRow = (table, item, generator) => {
   const { label, code } = item;
-  const id = generator(code);
+  const inputId = generator(code);
 
-  const row = table.insertRow(table.rows.length);
-  const labelCell = row.insertCell(0);
+  const newRow = table.insertRow(table.rows.length);
+  const labelCell = newRow.insertCell(0);
   labelCell.innerHTML = `<span>${truncate(label)}</span><span class="italic light-grey"> (${code})</span>`;
-  const valueCell = row.insertCell(1);
-  valueCell.innerHTML = `<input id="${id}" type="text" class="form-control ml-2">`;
+  const valueCell = newRow.insertCell(1);
+  valueCell.innerHTML = `<input id="${inputId}" type="text" class="form-control ml-2">`;
 
   // Listen for value input
-  const rowInput = get(id);
+  const rowInput = get(inputId);
   rowInput.oninput = () => {
     item.value = rowInput.value;
     updateDigitalLink();
   };
 
   // Start hidden and save a reference to table row and value container
-  row.style.display = 'none';
-  item.row = row;
+  newRow.style.display = 'none';
+  item.row = newRow;
 };
 
 const setRowVisible = (row, state) => {
@@ -106,11 +106,11 @@ const searchAiList = (query) => {
 const injectTableRows = () => {
   // Add rows to GS1 Data Attributes table
   const gs1AttributeTable = get('table_gs1_data_attributes');
-  AI_LIST.forEach(item => addAttributeRow(gs1AttributeTable, item, getIdFromAICode));
+  AI_LIST.forEach(item => insertAttributeRow(gs1AttributeTable, item, getIdFromAICode));
 
   // Add rows to Key Qualifier table
   const keyQualifierTable = get('table_key_qualifiers');
-  KEY_QUALIFIERS_LIST.forEach(item => addAttributeRow(keyQualifierTable, item, getIdFromKeyQualifierCode));
+  KEY_QUALIFIERS_LIST.forEach(item => insertAttributeRow(keyQualifierTable, item, getIdFromKeyQualifierCode));
 };
 
 const updateVisibleKeyQualifiers = () => {
