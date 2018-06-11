@@ -2,6 +2,11 @@ body {
   background-color: white !important;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
   height: 100%;
 }
@@ -27,7 +32,7 @@ table {
 }
 
 .qr-code {
-  width: 200px;
+  width: 180px;
   height: auto;
 }
 
@@ -61,8 +66,8 @@ table {
 
 .digital-link {
   color: black;
-  font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .fill {
@@ -87,8 +92,15 @@ table {
 
 .bold {
   font-weight: bold;
+  font-size: 1.02rem;
 }
 
 .right-col-top-margin {
-  margin-top: 180px;
+  margin-top: 120px;
+}
+
+.scroll-panel {
+  overflow-y: scroll;
+  max-height: 90%;
+  height: 100%;
 }

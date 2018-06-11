@@ -110,6 +110,11 @@
                 <input id="check_custom_data_attributes" type="checkbox" class="form-check-input">
                 <label class="bold" for="check_custom_data_attributes">SPECIFY CUSTOM DATA ATTRIBUTES</label>
               </div>
+              <div id="div_custom_attributes_group" class="start-hidden ml-4">
+                <table id="table_custom_attributes">
+                  <!-- Injected from JS -->
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -123,7 +128,7 @@
         <div class="col-md-5">
           <div class="row right-col-top-margin">
             <div class="col text-center">
-              <span class="text-center">YOUR GS1 DIGITAL LINK</span><br/>
+              <span class="text-center bold">YOUR GS1 DIGITAL LINK</span><br/>
             </div>
           </div>
           <div class="row">
@@ -133,7 +138,7 @@
               </span>
             </div>
           </div>
-          <div class="row mt-4">
+          <div class="row mt-5">
             <div class="col text-center">
               <img id="img_qr_code" class="qr-code" src="./assets/qr_placeholder.png">
             </div>
@@ -143,7 +148,7 @@
               <a href="#" class="text-center theme-color">Customize QR code</a>
             </div>
           </div>
-          <div class="row mt-4">
+          <div class="row mt-5">
             <div class="col text-center">
               <a id="a_experience" class="btn btn-secondary btn-lg btn-theme-color active" role="button">CREATE A CUSTOM EXPERIENCE</a>
             </div>
