@@ -37,9 +37,12 @@
                 <span class="bold">CHOOSE YOUR DOMAIN</span>
                 <select id="select_domain" class="form-control w-50 ml-4">
                   <option value="tngg">tn.gg (EVRYTHNG)</option>
-                  <option value="idgs1">id.gs1.org (Canonical)</option>
-                  <option vallue="custom">Custom domain...</option>
+                  <option value="idgs1org">id.gs1.org (Canonical)</option>
+                  <option value="custom">Custom domain...</option>
                 </select>
+              </div>
+              <div id="div_domain_wrapper" class="start-hidden">
+                <input id="input_domain_value" type="text" class="form-control w-50 ml-4" placeholder="Enter domain">
               </div>
             </div>
           </div>
@@ -66,7 +69,7 @@
                 <span class="bold">CHOOSE YOUR IDENTIFIER</span>
                 <div class="ml-4">
                   <select id="select_identifier" class="form-control">
-                    <option value="gtin">Global Trade Item Number (GTIN)</option>
+                    <!-- Injected from JS -->
                   </select>
                 </div>
               </div>
@@ -135,13 +138,13 @@
             </div>
           </div>
           <div class="row">
-            <div class="col text-center mt-3">
+            <div class="col text-center mt-2">
               <span id="span_digital_link" class="digital-link">
                 https://domain/identifier/XXXXXXXXXXXX/qualifiers/XXXX?attributes=XXX
               </span>
             </div>
           </div>
-          <div class="row mt-3">
+          <div class="row mt-4">
             <div class="col text-center">
               <img id="img_qr_code" class="qr-code" src="./assets/qr_placeholder.png">
             </div>
@@ -167,6 +170,7 @@
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
     <!-- Scripts -->
+    <script type="text/javascript" src="scripts/id-list.js"></script>
     <script type="text/javascript" src="scripts/ai-list.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
   </body>
