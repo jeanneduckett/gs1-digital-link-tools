@@ -111,3 +111,32 @@ table {
   height: auto !important;
   overflow: visible !important;
 }
+
+.subtitle {
+  font-family: 'Source Sans Pro' !important;
+  color: #444 !important;
+  font-size: 1.5rem;
+}
+
+.landing-icon {
+  width: 80px;
+  height: auto;
+}
+
+.landing-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.mw-60p {
+  max-width: 60%;
+  margin: auto;
+}
+
+.nav-title {
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1.2rem !important;
+}

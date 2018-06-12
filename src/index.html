@@ -16,23 +16,101 @@
     <title>GS1 Digital Link</title>
   </head>
   <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black">
+      <a class="navbar-brand" href="#">
+        <img src="assets/evt-logo.png" width="58" height="30" class="d-inline-block align-top" alt="">
+        <span class="ml-2 nav-title">GS1 Digital Link Tools</span>
+      </a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/generator.html">Generator</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/verifier.html">Verifier</a>
+        </li>
+      </ul>
+    </nav>
+
     <!-- App Content -->
     <div class="container-fluid fill">
       <!-- Main experience -->
       <div class="row mt-3 ml-2 fill">
-        <!-- LEFT COLUMN -->
-        <div class="col-md-6">
-          
-        </div>
+        <div class="col-md-12">
+          <!-- Title and description -->
+          <div class="row mt-3 ml-2">
+            <div class="col text-center">
+              <h2 class="landing-title">Get started with the GS1 Digital Link</h2>
+            </div>
+          </div>
+          <div class="row mt-3 ml-2 text-center">
+            <span class="subtitle mw-60p">
+              This new standard, launched June 2018, allows physical products to connect to the Web, using an intelligent product identity in the cloud, supporting not just point of sale scanning but consumer interaction and a host of new digital applications.
+            </span>
+          </div>
 
-        <!-- Separator -->
-        <div class="col-md-1 separator-wrapper">
-          <div class="separator"></div>
-        </div>
+          <!-- Two columns -->
+          <div class="row mt-3 ml-2 ">
+            <!-- LEFT COLUMN -->
+            <div class="col-md-6 text-center">
+              <div class="row">
+                <div class="col">
+                  <img class="landing-icon mt-5" src="assets/build.svg">
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <h1 class="mt-3">Create Your GS1 Digital Link</h1>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <span class="subtitle">
+                    See how GS1 Digital Links are formatted and what attributes can be included.
+                  </span>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col text-center">
+                  <a id="a_experience" href="/generator.html" class="btn btn-secondary btn-lg btn-theme-color active" role="button">GENERATOR</a>
+                </div>
+              </div>
+            </div>
 
-        <!-- RIGHT COLUMN -->
-        <div class="col-md-5">
-          
+            <!-- Separator -->
+            <div class="col-md-1 separator-wrapper">
+              <div class="separator"></div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="col-md-5 text-center">
+              <div class="row">
+                <div class="col">
+                  <img class="landing-icon mt-5" src="assets/verify.svg">
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <h1 class="mt-3">Verify Your GS1 Digital Link</h1>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <span class="subtitle">
+                    Already created a digital link? Check that it is valid with our verifier too.
+                  </span>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col text-center">
+                  <a id="a_experience" href="/verifier.html" class="btn btn-secondary btn-lg btn-theme-color active" role="button">VERIFIER</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
