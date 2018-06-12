@@ -40,11 +40,12 @@ const updateQrCode = () => {
 };
 
 const mapAlphaNumeric = (code) => {
-  const useAlpha = getElement('check_format_alphanumeric').checked;
-  if (!useAlpha) return code;
+  if (!getElement('check_format_alphanumeric').checked) return code;
 
   return ALPHA_MAP[`${code}`] || code;
 };
+
+const customAttributesSpecified = () => customAttributes.some(item => item.key && item.value);
 
 const updateDigitalLink = () => {
   // Domain
@@ -64,27 +65,27 @@ const updateDigitalLink = () => {
   });
 
   // Query params present?
-  const queryParams = AI_LIST.some(item => getElement(getIdFromAI(item.code)).value) || 
-    customAttributes.some(item => item.key && item.value);
+  const queryPresent = AI_LIST.some(item => getElement(getIdFromAI(item.code)).value) || 
+    customAttributesSpecified();
+  if (queryPresent) digitalLink += '?';
+
+  const queryParams = [];
 
   // GS1 Data Attributes
-  if (queryParams) {
-    digitalLink += '?';
-
-    // Key-value pairs
-    const gs1Attributes = AI_LIST.filter(item => item.value);
-    gs1Attributes.forEach((item, i) => {
-      if (i !== 0) digitalLink += '&';
-      digitalLink += `${item.code}=${item.value}`;
-    });
-  }
+  const gs1Attributes = AI_LIST.filter(item => item.value);
+  gs1Attributes.forEach((item, i) => queryParams.push([item.code, item.value]));
 
   // Custom Data Attributes
   customAttributes.forEach((item, i) => {
     if (!item.key || !item.value) return;
-    if (i !== 0 || digitalLink.charAt(digitalLink.length - 1) !== '&') digitalLink += '&';
 
-    digitalLink += `${item.key}=${item.value}`;
+    queryParams.push([item.key, item.value]);
+  });
+
+  queryParams.forEach((item, i) => {
+    if (i !== 0) digitalLink += '&';
+    
+    digitalLink += `${item[0]}=${item[1]}`;
   });
 
   // Update UI
