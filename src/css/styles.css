@@ -106,3 +106,8 @@ table {
   max-height: 90%;
   height: 100%;
 }
+
+.tall-dropdown {
+  height: auto !important;
+  overflow: visible !important;
+}
