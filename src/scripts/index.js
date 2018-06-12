@@ -1,7 +1,6 @@
 const MAX_LENGTH = 48;
 const DEFAULT_GTIN_VALUE = '9780345418913';
 const QR_SIZE = 180;
-const QR_TIMEOUT = 500;
 const DOMAINS = {
   TN_GG: { value: 'tngg', label: 'tn.gg (EVRYTHNG)', url: 'tn.gg' },
   ID_GS1: { value: 'idgs1org', label: 'id.gs1.org (Canonical)', url: 'id.gs1.org' },
@@ -9,6 +8,7 @@ const DOMAINS = {
 };
 
 const customAttributes = [];  // [{ key, value, row }]
+let qrCode;
 let digitalLink, qrFetchTimeout;
 
 const getElement = id => document.getElementById(id);
@@ -23,16 +23,20 @@ const getIdFromAI = code => `input_gs1_attribute_${code}`;
 
 const getIdFromKeyQualifier = code => `input_key_qualifier_${code}`;
 
-const generateQrCode = () => {
-  const url = `http://api.qrserver.com/v1/create-qr-code?data=${digitalLink}&size=${QR_SIZE}x${QR_SIZE}&format=png`;
-  getElement('img_qr_code').src = url;
-};
-
 const updateQrCode = () => {
-  // Don't request for every keystroke
-  if (qrFetchTimeout) clearTimeout(qrFetchTimeout);
+  if (!qrCode) {
+    qrCode = new QRCode('div_qr_code', {
+      text: digitalLink,
+      width: QR_SIZE,
+      height: QR_SIZE,
+      colorDark: '#000000',
+      colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.L,
+    });
+  }
 
-  qrFetchTimeout = setTimeout(generateQrCode, QR_TIMEOUT);
+  qrCode.clear();
+  qrCode.makeCode(digitalLink);
 };
 
 const updateDigitalLink = () => {

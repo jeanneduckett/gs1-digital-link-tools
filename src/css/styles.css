@@ -34,6 +34,8 @@ table {
 .qr-code {
   width: 180px;
   height: auto;
+  display: block;
+  margin: auto;
 }
 
 .theme-color {
