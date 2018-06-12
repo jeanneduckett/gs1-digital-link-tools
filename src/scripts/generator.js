@@ -39,6 +39,13 @@ const updateQrCode = () => {
   qrCode.makeCode(digitalLink);
 };
 
+const mapAlphaNumeric = (code) => {
+  const useAlpha = getElement('check_format_alphanumeric').checked;
+  if (!useAlpha) return code;
+
+  return ALPHA_MAP[`${code}`] || code;
+};
+
 const updateDigitalLink = () => {
   // Domain
   const domainKey = Object.keys(DOMAINS)
@@ -48,12 +55,12 @@ const updateDigitalLink = () => {
   // Identifier
   const identifier = IDENTIFIER_LIST.find(item => item.code === getElement('select_identifier').value);
   const identifierValue = getElement('input_identifier_value').value;
-  digitalLink = `https://${domain.url}/${identifier.code}/${identifierValue}`;
+  digitalLink = `https://${domain.url}/${mapAlphaNumeric(identifier.code)}/${identifierValue}`;
 
   // Key qualifiers
   KEY_QUALIFIERS_LIST.forEach((item) => {
     const input = getElement(getIdFromKeyQualifier(item.code));
-    if (input.value) digitalLink += `/${item.code}/${input.value}`;
+    if (input.value) digitalLink += `/${mapAlphaNumeric(item.code)}/${input.value}`;
   });
 
   // Query params present?
@@ -219,6 +226,10 @@ const setupUI = () => {
     DOMAINS.CUSTOM.url = inputDomainValue.value;
     updateDigitalLink();
   };
+
+  // Format options
+  getElement('check_format_alphanumeric').onchange = updateDigitalLink;
+  getElement('check_format_numeric').onchange = updateDigitalLink;
 
   // Set identifier options
   const selectIdentifier = getElement('select_identifier');
