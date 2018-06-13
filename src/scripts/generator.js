@@ -11,13 +11,7 @@ const customAttributes = [];  // [{ key, value, row }]
 let qrCode;
 let digitalLink, qrFetchTimeout;
 
-const getElement = id => document.getElementById(id);
-
 const truncate = str => (str.length < MAX_LENGTH) ? str : `${str.substring(0, MAX_LENGTH - 2)}...`;
-
-const setVisible = (id, state) => {
-  getElement(id).style.display = state ? 'block' : 'none';
-};
 
 const getIdFromAI = code => `input_gs1_attribute_${code}`;
 

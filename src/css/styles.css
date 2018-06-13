@@ -140,3 +140,8 @@ table {
 .nav-link {
   font-size: 1.2rem !important;
 }
+
+.verifier-query {
+  margin: auto;
+  max-width: 50%;
+}

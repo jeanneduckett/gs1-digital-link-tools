@@ -1,4 +1,4 @@
-var KEY_QUALIFIERS_LIST = [
+const KEY_QUALIFIERS_LIST = [
   {
     "code": "22",
     "label": "Consumer product variant"

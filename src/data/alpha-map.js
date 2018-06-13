@@ -1,4 +1,4 @@
-var ALPHA_MAP = {
+const ALPHA_MAP = {
   "01": "gtin",
   "8006": "itip",
   "8013": "gmn",

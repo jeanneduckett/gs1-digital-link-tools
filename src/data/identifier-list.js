@@ -1,4 +1,4 @@
-var IDENTIFIER_LIST = [
+const IDENTIFIER_LIST = [
   {
     "code": "00",
     "label": "Serial Shipping Container Code (SSCC)",

@@ -23,15 +23,9 @@
         <span class="ml-2 nav-title">GS1 Digital Link Tools</span>
       </a>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/generator.html">Generator</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/verifier.html">Verifier</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/generator.html">Generator</a></li>
+        <li class="nav-item active"><a class="nav-link" href="/verifier.html">Verifier</a></li>
       </ul>
     </nav>
 
@@ -39,26 +33,23 @@
     <div class="container-fluid">
       <!-- Main experience -->
       <div class="row mt-3 ml-2">
-        <!-- LEFT COLUMN-->
-        <div class="col-md-6">
+        <div class="col-md-12">
           <!-- Headings -->
-          <div class="row mt-3">
+          <div class="row mt-3 text-center">
             <div class="col">
-              <h2 >Verify Your GS1 Digital Link</h2>
-              <div class="blue-underline"></div>
+              <h2 class="landing-title">Verify Your GS1 Digital Link</h2>
             </div>
           </div>
-          
-        </div>
 
-        <!-- Separator -->
-        <div class="col-md-1 separator-wrapper">
-          <div class="separator"></div>
-        </div>
-
-        <!-- RIGHT COLUMN -->
-        <div class="col-md-5">
-          
+          <!-- Form -->
+          <div class="row mt-3 text-center">
+            <span class="subtitle mw-60p">Enter your GS1 Digital Link here, and we'll tell you if it is valid. If it's not, you can also view the grammar and parser output for all the fine details.</span>
+          </div>
+          <div class="row mt-5">
+            <div class="col">
+              <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query text-center" placeholder="Enter GS1 Digital Link">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -70,6 +61,7 @@
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
     <!-- Scripts -->
+    <script type="text/javascript" src="scripts/util.js"></script>
     <script type="text/javascript" src="scripts/verifier.js"></script>
   </body>
 </html>

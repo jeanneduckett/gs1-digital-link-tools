@@ -1,4 +1,4 @@
-var AI_LIST = [
+const AI_LIST = [
   { "code": "02", "label": "GTIN of contained trade items" },
   { "code": "11", "label": "Production date (YYMMDD)" },
   { "code": "12", "label": "Due date (YYMMDD)" },
