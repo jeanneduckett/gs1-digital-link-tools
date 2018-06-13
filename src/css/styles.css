@@ -103,7 +103,7 @@ table {
 
 .scroll-panel {
   overflow-y: scroll;
-  max-height: 90%;
+  max-height: 100%;
   height: 100%;
 }
 
@@ -143,9 +143,10 @@ table {
 
 .verifier-query {
   margin: auto;
-  max-width: 50%;
+  max-width: 70%;
 }
 
 .grammar {
   white-space:pre-wrap;
+  font-family: monospace !important;
 }
