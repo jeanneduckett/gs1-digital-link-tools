@@ -19,7 +19,7 @@ const runVerifier = (inputString) => {
 
     const grammar = new grammarObject();
     const inputChars = apglib.utils.stringToChars(inputString);
-    const startRule = inputString.includes("id.gs1.org") ? "canonicalGS1webURI" : "customGS1webURI";
+    const startRule = inputString.includes('id.gs1.org') ? 'canonicalGS1webURI' : 'customGS1webURI';
     const uriParts = [];
     const result = parser.parse(grammar, startRule, inputChars, uriParts);
 
@@ -44,6 +44,6 @@ const runVerifier = (inputString) => {
     getElement('div_results').innerHTML = resultHtml;
   } catch (e) {
     console.log(e);
-    $('#result').html(`EXCEPTION THROWN: ${e.message || e}`);
+    getElement('div_results').innerHTML = `EXCEPTION THROWN: ${e.message || e}`;
   }
 };
