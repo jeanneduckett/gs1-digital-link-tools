@@ -50,6 +50,30 @@
               <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query text-center" placeholder="Enter GS1 Digital Link">
             </div>
           </div>
+
+          <!-- Results -->
+          <div class="row mt-4">
+            <div class="col">
+              <span class="bold">RESULTS</span>
+              <div id="div_results" class="results">N/A</div>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="row mt-4">
+            <div class="col">
+              <span class="bold">STATS</span>
+              <div id="div_stats" class="stats">N/A</div>
+            </div>
+          </div>
+
+          <!-- Trace -->
+          <div class="row mt-4">
+            <div class="col">
+              <span class="bold">TRACE</span>
+              <div id="div_trace" class="trace">N/A</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -60,11 +84,15 @@
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
+    <!-- Util -->
+    <script type="text/javascript" src="scripts/util.js"></script>
+
     <!-- Grammer Parser -->
+    <script type="text/javascript" src="lib/verifier/GS1_Web_URI.js"></script>
     <script type="text/javascript" src="lib/verifier/apg-lib-min.js"></script>
+    <script type="text/javascript" src="lib/verifier/verify.js"></script>
 
     <!-- App -->
-    <script type="text/javascript" src="scripts/util.js"></script>
     <script type="text/javascript" src="scripts/verifier.js"></script>
   </body>
 </html>

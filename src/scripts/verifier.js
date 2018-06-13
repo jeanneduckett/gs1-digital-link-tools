@@ -1,5 +1,7 @@
-const verifyQuery = (query) => {
+var grammarStr = new grammarObject().toString();
 
+const verifyQuery = (query) => {
+  runVerifier(query);
 };
 
 const setupUI = () => {
