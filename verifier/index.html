@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>GS1 Digital Link Verifier - GS1 Web URI</title>
+<meta charset="utf-8">
+
+<!--  jQuery, jQuery UI & jQuery UI CSS -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="apg-lib-min.js" charset="utf-8"></script>
+<script src="GS1_Web_URI.js" charset="utf-8"></script>
+<script src="verify.js" charset="utf-8"></script>
+</head>
+<body>
+ <div id="tabs">
+  <ul>
+   <li><a href="#tabs-home">verify</a></li>
+	 <li><a href="#tabs-trace">trace</a></li>
+   <li><a href="#tabs-stats">stats</a></li>
+	 <li><a href="#tabs-grammar">grammar</a></li>
+  </ul>
+  <div id="tabs-home">
+  <p>
+  Verify a GS1 Digital Link (GS1 Web URI)<br>
+  </p>
+     <p>
+      <b>GS1 Digital Link:</b><br>
+      <textarea id="string" wrap="off" rows="1" cols="70"></textarea>
+     </p>
+		 <p>
+      <input type="button" id="parse" value="Verify" /><span id="parse-msg" class="comment">
+     </p>
+     <p id="result"></p>
+  </div>
+  <div id="tabs-stats"></div>
+  <div id="tabs-trace"></div>
+	<div id="tabs-grammar">
+		<p>
+			<pre id="grammar-bnf"></pre>
+		</p>
+	</div>
+ </div>
+</body>
+</html>
