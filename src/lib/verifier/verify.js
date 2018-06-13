@@ -38,9 +38,9 @@ const runVerifier = (inputString) => {
       getElement('div_trace').innerHTML = traceHtml;
     }
     
-    let resultHtml = '<h3>Parser Results</h3>';
-    resultHtml += apglib.apglib.utils.parserResultToHtml(result);
-    resultHtml += `<p>The syntax of this GS1 Digital Link is <b>${result.success ? 'valid' : 'invalid'}.</p>`;
+    const resultHtml = `<h3>Parser Results</h3>
+      ${apglib.utils.parserResultToHtml(result)}
+      <p>The syntax of this GS1 Digital Link is <b>${result.success ? 'valid' : 'invalid'}.</p>`;
     getElement('div_results').innerHTML = resultHtml;
   } catch (e) {
     console.log(e);
