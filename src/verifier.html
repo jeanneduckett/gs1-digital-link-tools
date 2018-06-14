@@ -23,7 +23,7 @@
         <span class="ml-2 nav-title">GS1 Digital Link Tools</span>
       </a>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="./generator.html">Generator</a></li>
         <li class="nav-item active"><a class="nav-link" href="./verifier.html">Verifier</a></li>
       </ul>
@@ -31,6 +31,7 @@
 
     <!-- App Content -->
     <div class="container-fluid">
+      <div class="blue-underline"></div>
       <!-- Main experience -->
       <div class="row ml-2">
         <div class="col-md-12">
@@ -42,17 +43,34 @@
               <div class="row mt-3">
                 <div class="col">
                   <h2 >Verify Your GS1 Digital Link</h2>
-                  <div class="blue-underline"></div>
                 </div>
               </div>
 
-              <!-- Form -->
-              <div class="row mt-3">
-                <span class="subtitle ml-3 mr-3">Enter your GS1 Digital Link here, and we'll tell you if it is valid. You can also view the grammar and parser output for all the fine details.</span>
-              </div>
-              <div class="row mt-5">
+              <!-- Input form -->
+              <div class="row mt-4">
                 <div class="col">
-                  <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query text-center" placeholder="Enter GS1 Digital Link">
+                  <div class="form-group">
+                    <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
+                  </div>
+                  <div>
+                    <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">Verify</a>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <span id="span_verdict_label" class="subtitle-small"></span>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                  <img id="img_verdict" class="verdict-icon">
+                  <span id="span_verdict_result" class="subtitle-large ml-3"></span>
                 </div>
               </div>
             </div>
@@ -63,43 +81,54 @@
             </div>
 
             <!-- RIGHT COLUMN-->
-            <div class="col-md-5 scroll-panel">
-              <div class="row mt-5">
-                <div class="col">
-                  <span id="div_verdict" class="subtitle">
-                    Enter a GS1 Digital Link to see in-depth parser output.
-                  </span>
-                </div>
-              </div>
-              <!-- Results -->
-              <div class="row mt-4">
-                <div class="col">
-                  <span class="bold">RESULTS</span>
-                  <div id="div_results" class="results">N/A</div>
-                </div>
+            <div class="col-md-5">
+              <div class="nav nav-tabs" role="tablist">
+                <a class="nav-item nav-link active" data-toggle="tab" role="tab" href="#tab_results">RESULTS</a>
+                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_stats">STATS</a>
+                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_trace">TRACE</a>
+                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_grammar">GRAMMAR</a>
               </div>
 
-              <!-- Stats -->
-              <div class="row mt-4">
-                <div class="col">
-                  <span class="bold">STATS</span>
-                  <div id="div_stats" class="stats">N/A</div>
+              <!-- Main form -->
+              <div class="tab-content">
+                <!-- Results -->
+                <div id="tab_results" class="tab-pane show active" role="tabpanel">
+                  <div class="row mt-4">
+                    <div class="col">
+                      <span class="bold">RESULTS</span>
+                      <div id="div_results" class="results">Nothing yet.</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Trace -->
-              <div class="row mt-4">
-                <div class="col">
-                  <span class="bold">TRACE</span>
-                  <div id="div_trace" class="trace">N/A</div>
+                <!-- Stats -->
+                <div id="tab_stats" class="tab-pane show" role="tabpanel">
+                  <div class="row mt-4">
+                    <div class="col">
+                      <span class="bold">STATS</span>
+                      <div id="div_stats" class="stats">Nothing yet.</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Grammar -->
-              <div class="row mt-4">
-                <div class="col">
-                  <span class="bold">GRAMMAR</span>
-                  <div id="div_grammar" class="grammar">N/A</div>
+                <!-- Trace -->
+                <div id="tab_trace" class="tab-pane show" role="tabpanel">
+                  <div class="row mt-4">
+                    <div class="col">
+                      <span class="bold">TRACE</span>
+                      <div id="div_trace" class="trace">Nothing yet.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Grammar -->
+                <div id="tab_grammar" class="tab-pane show" role="tabpanel">
+                  <div class="row mt-4">
+                    <div class="col">
+                      <span class="bold">GRAMMAR</span>
+                      <div id="div_grammar" class="grammar">Nothing yet.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

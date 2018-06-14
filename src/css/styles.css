@@ -81,7 +81,10 @@ table {
   background-color: #3b7bda;
   min-height: 5px;
   height: 5px;
-  width: 60%;
+  width: 430px;
+  position: absolute;
+  left: 0px;
+  top: 135px;
 }
 
 .italic {
@@ -118,6 +121,19 @@ table {
   font-size: 1.5rem;
 }
 
+.subtitle-small {
+  font-family: 'Source Sans Pro' !important;
+  color: #444 !important;
+  font-size: 1.3rem;
+}
+
+.subtitle-large {
+  font-family: 'Source Sans Pro' !important;
+  color: #444 !important;
+  font-weight: bold;
+  font-size: 1.7rem !important;
+}
+
 .landing-icon {
   width: 80px;
   height: auto;
@@ -143,10 +159,27 @@ table {
 
 .verifier-query {
   margin: auto;
-  max-width: 70%;
 }
 
 .grammar {
   white-space:pre-wrap;
   font-family: monospace !important;
+}
+
+.verdict-icon {
+  width: 60px;
+  height: auto;
+  border: hidden;
+}
+
+.nav-link {
+  padding-bottom: 10px !important;
+}
+
+.nav-link:hover {
+  border-color: #FFF #FFF #a0c6ff !important;
+}
+
+.nav-link.active {
+  border-color: #FFF #FFF #3b7bda !important;
 }

@@ -2,8 +2,8 @@
   "name": "gs1-digital-link-tool",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/parcel build src/index.html",
-    "serve": "./node_modules/.bin/parcel src/index.html"
+    "build": "./node_modules/.bin/parcel build src/index.html src/assets/*",
+    "serve": "./node_modules/.bin/parcel src/index.html src/assets/*"
   },
   "author": "EVRYTHNG",
   "dependencies": {
