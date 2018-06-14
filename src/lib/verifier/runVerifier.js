@@ -1,3 +1,8 @@
+const apglib = require('apg-lib');
+
+const { getElement } = require('../../scripts/util');
+const { grammarObject } = require('./GS1_Web_URI.js');
+
 const CONFIG = {
   STATS: true,
   TRACE: true,
@@ -10,7 +15,7 @@ const CONFIG = {
  * inputChars - the input string. Can be a string or an array of integer character codes representing the string.
  * uriParts - user-defined data object to be passed to the user’s callback functions. This is not used by the parser in any way, merely passed on to the user. May be null or omitted.
 */
-const runVerifier = (inputString) => {
+module.exports = (inputString) => {
   try {
     const parser = new apglib.parser();
 

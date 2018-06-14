@@ -2,10 +2,15 @@
   "name": "gs1-digital-link-tool",
   "version": "1.0.0",
   "scripts": {
-    "serve": "cd src && python -m SimpleHTTPServer"
+    "serve": "./node_modules/.bin/parcel src"
   },
   "author": "EVRYTHNG",
   "dependencies": {
+    "apg-lib": "^3.2.0",
+    "data": "^0.6.1",
+    "lib": "^3.0.2",
+    "parcel-bundler": "^1.8.1",
+    "qrious": "^4.0.2",
     "request": "^2.87.0"
   }
 }

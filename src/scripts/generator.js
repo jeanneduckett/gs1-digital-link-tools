@@ -1,3 +1,15 @@
+const Qrious = require('qrious');
+
+const { 
+  getElement,
+  setVisible,
+} = require('./util');
+
+const KEY_QUALIFIERS_LIST = require('../data/key-qualifier-list.json');
+const IDENTIFIER_LIST = require('../data/identifier-list.json');
+const AI_LIST = require('../data/ai-list.json');
+const ALPHA_MAP = require('../data/alpha-map.json');
+
 const MAX_LENGTH = 48;
 const DEFAULT_GTIN_VALUE = '9780345418913';
 const QR_SIZE = 180;
@@ -19,18 +31,17 @@ const getIdFromKeyQualifier = code => `input_key_qualifier_${code}`;
 
 const updateQrCode = () => {
   if (!qrCode) {
-    qrCode = new QRCode('div_qr_code', {
-      text: digitalLink,
-      width: QR_SIZE,
-      height: QR_SIZE,
-      colorDark: '#000000',
-      colorLight: '#FFFFFF',
-      correctLevel: QRCode.CorrectLevel.L,
+    qrCode = new Qrious({
+      element: getElement('canvas_qr_code'),
+      size: QR_SIZE,
+      value: digitalLink,
+      level: 'L',
+      foreground: '#000000',
+      background: '#FFFFFF',
     });
   }
 
-  qrCode.clear();
-  qrCode.makeCode(digitalLink);
+  qrCode.value = digitalLink;
 };
 
 const mapAlphaNumeric = (code) => {
@@ -206,6 +217,12 @@ const updateVisibleKeyQualifiers = () => {
   visibleRows.forEach(item => setRowVisible(item.row, true));
 };
 
+const updateIdentifierValueLabel = () => {
+  const selectIdentifier = getElement('select_identifier');
+  const code = IDENTIFIER_LIST.find(item => item.code === selectIdentifier.value).code;
+  getElement('span_identifier_label').innerHTML = `(${code})`;
+};
+
 const setupUI = () => {
   // Domain
   const selectDomain = getElement('select_domain');
@@ -227,19 +244,22 @@ const setupUI = () => {
   getElement('check_format_numeric').onchange = updateDigitalLink;
 
   // Set identifier options
-  const selectIdentifier = getElement('select_identifier');
-  selectIdentifier.options.length = 0;
-  IDENTIFIER_LIST.forEach(item => selectIdentifier.options.add(new Option(item.label, item.code)));
-  // Different key qualifiers show depending on the identifier
-  selectIdentifier.onchange = () => {
-    updateVisibleKeyQualifiers();
-    updateDigitalLink();
-  };
-  selectIdentifier.value = IDENTIFIER_LIST[1].code;
-
   const inputIdentifierValue = getElement('input_identifier_value');
   inputIdentifierValue.oninput = updateDigitalLink;
   inputIdentifierValue.value = DEFAULT_GTIN_VALUE;
+
+  const selectIdentifier = getElement('select_identifier');
+  selectIdentifier.options.length = 0;
+  IDENTIFIER_LIST.forEach(item => selectIdentifier.options.add(new Option(item.label, item.code)));
+  selectIdentifier.onchange = () => {
+    updateDigitalLink();
+
+    // Different key qualifiers show depending on the identifier
+    updateVisibleKeyQualifiers();
+
+    updateIdentifierValueLabel();
+  };
+  selectIdentifier.value = IDENTIFIER_LIST[1].code;
 
   // Data qualifiers
   const checkQualifiers = getElement('check_key_qualifiers');
@@ -274,6 +294,7 @@ const setupUI = () => {
   setupUI();
   updateDigitalLink();
   updateVisibleKeyQualifiers();
+  updateIdentifierValueLabel();
 
   console.log('Script loaded!');
 })();

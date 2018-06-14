@@ -1,4 +1,4 @@
-const ALPHA_MAP = {
+{
   "01": "gtin",
   "8006": "itip",
   "8013": "gmn",
@@ -26,4 +26,4 @@ const ALPHA_MAP = {
   "254": "glnx",
   "8020": "refno",
   "8019": "srin"
-};
+}

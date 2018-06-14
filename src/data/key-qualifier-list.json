@@ -1,4 +1,4 @@
-const KEY_QUALIFIERS_LIST = [
+[
   {
     "code": "22",
     "label": "Consumer product variant"
@@ -23,4 +23,4 @@ const KEY_QUALIFIERS_LIST = [
     "code": "8017",
     "label": "Service Relation Instance Number (SRIN)"
   }
-];
+]
