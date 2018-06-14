@@ -1,6 +1,6 @@
 const Qrious = require('qrious');
 
-const { 
+const {
   getElement,
   setVisible,
 } = require('./util');
@@ -9,6 +9,7 @@ const KEY_QUALIFIERS_LIST = require('../data/key-qualifier-list.json');
 const IDENTIFIER_LIST = require('../data/identifier-list.json');
 const AI_LIST = require('../data/ai-list.json');
 const ALPHA_MAP = require('../data/alpha-map.json');
+const QR_CODE_CONFIGS = require('../data/qr-code-configs.json');
 
 const MAX_LENGTH = 48;
 const DEFAULT_GTIN_VALUE = '9780345418913';
@@ -29,7 +30,7 @@ const getIdFromAI = code => `input_gs1_attribute_${code}`;
 
 const getIdFromKeyQualifier = code => `input_key_qualifier_${code}`;
 
-const updateQrCode = () => {
+const generateClassicQrCode = () => {
   if (!qrCode) {
     qrCode = new Qrious({
       element: getElement('canvas_qr_code'),
@@ -42,6 +43,15 @@ const updateQrCode = () => {
   }
 
   qrCode.value = digitalLink;
+}
+
+const updateQrCode = () => {
+  const key = getElement('select_qr_code_style').value;
+  const map = {
+    default: generateClassicQrCode,
+  };
+
+  if (map[key]) map[key]();
 };
 
 const mapAlphaNumeric = (code) => {
@@ -57,7 +67,7 @@ const updateDigitalLink = () => {
   const domainKey = Object.keys(DOMAINS)
     .find(item => DOMAINS[item].value === getElement('select_domain').value);
   const domain = DOMAINS[domainKey];
-  
+
   // Identifier
   const identifier = IDENTIFIER_LIST.find(item => item.code === getElement('select_identifier').value);
   const identifierValue = getElement('input_identifier_value').value;
@@ -70,7 +80,7 @@ const updateDigitalLink = () => {
   });
 
   // Query params present?
-  const queryPresent = AI_LIST.some(item => getElement(getIdFromAI(item.code)).value) || 
+  const queryPresent = AI_LIST.some(item => getElement(getIdFromAI(item.code)).value) ||
     customAttributesSpecified();
   if (queryPresent) digitalLink += '?';
 
@@ -89,7 +99,7 @@ const updateDigitalLink = () => {
 
   queryParams.forEach((item, i) => {
     if (i !== 0) digitalLink += '&';
-    
+
     digitalLink += `${item[0]}=${item[1]}`;
   });
 
@@ -251,15 +261,12 @@ const setupUI = () => {
   const selectIdentifier = getElement('select_identifier');
   selectIdentifier.options.length = 0;
   IDENTIFIER_LIST.forEach(item => selectIdentifier.options.add(new Option(item.label, item.code)));
+  selectIdentifier.value = IDENTIFIER_LIST[1].code;
   selectIdentifier.onchange = () => {
     updateDigitalLink();
-
-    // Different key qualifiers show depending on the identifier
     updateVisibleKeyQualifiers();
-
     updateIdentifierValueLabel();
   };
-  selectIdentifier.value = IDENTIFIER_LIST[1].code;
 
   // Data qualifiers
   const checkQualifiers = getElement('check_key_qualifiers');
@@ -287,6 +294,15 @@ const setupUI = () => {
   // Custom Attributes
   const checkCustomAttributes = getElement('check_custom_data_attributes');
   checkCustomAttributes.onclick = () => setVisible('div_custom_attributes_group', checkCustomAttributes.checked);
+
+  // QR Code Style
+  const selectQrCodeStyle = getElement('select_qr_code_style');
+  selectQrCodeStyle.options.length = 0;
+  Object.keys(QR_CODE_CONFIGS).forEach((item) => {
+    selectQrCodeStyle.options.add(new Option(QR_CODE_CONFIGS[item].label, item));
+  });
+  selectQrCodeStyle.value = 'default';
+  selectQrCodeStyle.onchange = updateQrCode;
 };
 
 (() => {

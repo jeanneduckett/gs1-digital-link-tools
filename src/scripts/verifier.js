@@ -8,6 +8,7 @@ const IDENTIFIER_LIST = require('../data/identifier-list.json');
 const AI_LIST = require('../data/ai-list.json');
 const ALPHA_MAP = require('../data/alpha-map.json');
 
+const DEFAULT_QUERY = 'https://gs1.example.org/gtin/9780345418913/ser/43768';
 const CONFIG = {
   STATS: true,
   TRACE: true,
@@ -60,6 +61,7 @@ const runVerifier = (inputString) => {
 
 const setupUI = () => {
   const inputQuery = getElement('input_verifier_query');
+  inputQuery.value = DEFAULT_QUERY;
 
   const aVerify = getElement('a_verify');
   aVerify.onclick = () => {

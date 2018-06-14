@@ -1,0 +1,10 @@
+{
+  "default": {
+    "label": "Classic black and white"
+  },
+  "roundedBlueLogo": {
+    "label": "Rounded blue with logo",
+    "background": "#FFFFFF",
+    "foreground": "#0000FF"
+  }
+}

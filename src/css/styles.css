@@ -22,7 +22,12 @@ hr {
 }
 
 table {
-  border-width: 
+  border-width: 0px;
+}
+
+td {
+  padding: 5px;
+  font-size: 0.9rem;
 }
 
 .btn-block {
@@ -101,7 +106,7 @@ table {
 }
 
 .right-col-top-margin {
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 .scroll-panel {
@@ -174,6 +179,7 @@ table {
 
 .nav-link {
   padding-bottom: 10px !important;
+  padding-top: 10px !important;
 }
 
 .nav-link:hover {
@@ -182,4 +188,8 @@ table {
 
 .nav-link.active {
   border-color: #FFF #FFF #3b7bda !important;
+}
+
+.qr-choice {
+  width: 150px !important;
 }
