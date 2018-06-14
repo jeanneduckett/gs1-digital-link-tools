@@ -118,12 +118,12 @@ th {
   overflow-y: scroll;
   overflow-x: scroll;
   width: 700px;
-  height: 700px;
+  height: 800px;
 }
 
 .scroll-wrapper {
   width: 700px;
-  height: 700px;
+  height: 800px;
 }
 
 .tall-dropdown {
