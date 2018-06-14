@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34536951-10"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-34536951-10');
+    </script>
+
     <title>GS1 Digital Link Verifier</title>
   </head>
   <body>
@@ -89,40 +99,44 @@
                 <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_grammar">GRAMMAR</a>
               </div>
 
-              <!-- Main form -->
-              <div class="tab-content">
-                <!-- Results -->
-                <div id="tab_results" class="tab-pane show active" role="tabpanel">
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div id="div_results" class="results">Nothing yet.</div>
+              <div class="scroll-container">
+                <div class="scroll-wrapper">
+                  <!-- Main form -->
+                  <div class="tab-content">
+                    <!-- Results -->
+                    <div id="tab_results" class="tab-pane show active" role="tabpanel">
+                      <div class="row mt-4">
+                        <div class="col">
+                          <div id="div_results" class="results">Nothing yet.</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Stats -->
-                <div id="tab_stats" class="tab-pane show" role="tabpanel">
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div id="div_stats" class="stats">Nothing yet.</div>
+                    <!-- Stats -->
+                    <div id="tab_stats" class="tab-pane show" role="tabpanel">
+                      <div class="row mt-4">
+                        <div class="col">
+                          <div id="div_stats" class="stats">Nothing yet.</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Trace -->
-                <div id="tab_trace" class="tab-pane show" role="tabpanel">
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div id="div_trace" class="trace">Nothing yet.</div>
+                    <!-- Trace -->
+                    <div id="tab_trace" class="tab-pane show" role="tabpanel">
+                      <div class="row mt-4">
+                        <div class="col">
+                          <div id="div_trace" class="trace">Nothing yet.</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Grammar -->
-                <div id="tab_grammar" class="tab-pane show" role="tabpanel">
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div id="div_grammar" class="grammar">Nothing yet.</div>
+                    <!-- Grammar -->
+                    <div id="tab_grammar" class="tab-pane show" role="tabpanel">
+                      <div class="row mt-4">
+                        <div class="col">
+                          <div id="div_grammar" class="grammar">Nothing yet.</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

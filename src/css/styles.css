@@ -27,7 +27,12 @@ table {
 
 td {
   padding: 5px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+}
+
+th {
+  padding: 5px;
+  font-size: 0.8rem;
 }
 
 .btn-block {
@@ -89,7 +94,7 @@ td {
   width: 430px;
   position: absolute;
   left: 0px;
-  top: 135px;
+  top: 138px;
 }
 
 .italic {
@@ -109,10 +114,16 @@ td {
   margin-top: 100px;
 }
 
-.scroll-panel {
+.scroll-container {
   overflow-y: scroll;
-  max-height: 100%;
-  height: 100%;
+  overflow-x: scroll;
+  width: 700px;
+  height: 700px;
+}
+
+.scroll-wrapper {
+  width: 700px;
+  height: 700px;
 }
 
 .tall-dropdown {
