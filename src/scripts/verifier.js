@@ -9,8 +9,16 @@ const UI = {
   inputVerifierQuery: getElement('input_verifier_query'),
 };
 
+const getUrlParam = () => {
+  const { search } = document.location;
+  if (!search.includes('?url')) return false;
+
+  return search.substring(search.indexOf('url=') + 'url='.length);
+}
+
 const setupUI = () => {
-  UI.inputVerifierQuery.value = DEFAULT_QUERY;
+  const urlParam = getUrlParam();
+  UI.inputVerifierQuery.value = urlParam || DEFAULT_QUERY;
 
   UI.aVerify.onclick = () => {
     const inputString = UI.inputVerifierQuery.value;

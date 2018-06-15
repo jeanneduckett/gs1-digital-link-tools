@@ -22,6 +22,7 @@ const DOMAINS = {
 };
 const UI = {
   aQrCodeGenerate: getElement('a_qrcode_generate'),
+  aRunVerifier: getElement('a_run_verifier'),
   canvasQRCode: getElement('canvas_qr_code'),
   checkCustomAttributes: getElement('check_custom_data_attributes'),
   checkFormatAlphanumeric: getElement('check_format_alphanumeric'),
@@ -343,6 +344,11 @@ const setupUI = () => {
   // Custom Attributes
   UI.checkCustomAttributes.onclick = () => {
     setVisible('div_custom_attributes_group', UI.checkCustomAttributes.checked);
+  };
+
+  // Run Verifier button
+  UI.aRunVerifier.onclick = () => {
+    window.open(`${document.location.origin}/verifier.html?url=${digitalLink}`, '_blank');
   };
 
   // QR Code Style
