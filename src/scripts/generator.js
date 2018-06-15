@@ -55,9 +55,11 @@ const truncate = (str) => {
   return `${str.substring(0, MAX_LENGTH - 2)}...`;
 };
 
-const getIdFromAI = code => `input_gs1_attribute_${code}`;
+const mapAIInputId = code => `input_gs1_attribute_${code}`;
 
-const getIdFromKeyQualifier = code => `input_key_qualifier_${code}`;
+const mapKeyQualifierInputId = code => `input_key_qualifier_${code}`;
+
+const mapKeyQualifierIconId = code => `img_key_qualifier_${code}`;
 
 const generateClassicQrCode = () => {
   if (!qrCode) {
@@ -79,7 +81,7 @@ const updateQrCode = () => {
   const map = {
     default: generateClassicQrCode,
     roundedBlueLogo: () => {
-      // Call mashape
+      // Call API
     },
     // ...
   };
@@ -108,12 +110,12 @@ const updateDigitalLink = () => {
 
   // Key qualifiers
   KEY_QUALIFIERS_LIST.forEach((item) => {
-    const input = getElement(getIdFromKeyQualifier(item.code));
+    const input = getElement(mapKeyQualifierInputId(item.code));
     if (input.value) digitalLink += `/${mapAlphaNumeric(item.code)}/${input.value}`;
   });
 
   // Query params present?
-  const queryPresent = AI_LIST.some(item => getElement(getIdFromAI(item.code)).value) ||
+  const queryPresent = AI_LIST.some(item => getElement(mapAIInputId(item.code)).value) ||
     customAttributesSpecified();
   if (queryPresent) digitalLink += '?';
 
@@ -145,9 +147,47 @@ const updateDigitalLink = () => {
   updateQrCode();
 };
 
-const insertAttributeRow = (table, item, generator) => {
+const validateKeyQualifier = ({ code, value, ruleName }) => {
+  const iconId = mapKeyQualifierIconId(code);
+  if (!ruleName || !value) {
+    setVisible(iconId, false);
+    return;
+  }
+
+  setVisible(iconId, true);
+  const valid = parser.validate(value, ruleName);
+  getElement(iconId).src = `./assets/${valid ? '' : 'in'}valid.svg`;
+};
+
+const insertKeyQualifierRow = (table, item) => {
   const { label, code } = item;
-  const inputId = generator(code);
+  const inputId = mapKeyQualifierInputId(code);
+  const newRow = table.insertRow(table.rows.length);
+  const labelCell = newRow.insertCell(0);
+  labelCell.innerHTML = `<span>${truncate(label)}</span><span class="italic light-grey"> (${code})</span>`;
+  const valueCell = newRow.insertCell(1);
+  valueCell.innerHTML = `<input id="${inputId}" type="text" class="form-control ml-2">`;
+  const iconCell = newRow.insertCell(2);
+  if (item.ruleName) {
+    iconCell.innerHTML = `<img id="${mapKeyQualifierIconId(code)}" class="verdict-icon-small ml-2 mt-2" src="./assets/blank.png">`;
+  }
+
+  const rowInput = getElement(inputId);
+  rowInput.oninput = () => {
+    item.value = rowInput.value;
+    updateDigitalLink();
+
+    validateKeyQualifier(item);
+  };
+
+  // Start hidden and save a reference to table row and value container
+  newRow.style.display = 'none';
+  item.row = newRow;
+};
+
+const insertAttributeRow = (table, item) => {
+  const { label, code } = item;
+  const inputId = mapAIInputId(code);
 
   const newRow = table.insertRow(table.rows.length);
   const labelCell = newRow.insertCell(0);
@@ -155,7 +195,6 @@ const insertAttributeRow = (table, item, generator) => {
   const valueCell = newRow.insertCell(1);
   valueCell.innerHTML = `<input id="${inputId}" type="text" class="form-control ml-2">`;
 
-  // Listen for value input
   const rowInput = getElement(inputId);
   rowInput.oninput = () => {
     item.value = rowInput.value;
@@ -200,10 +239,10 @@ const updateCustomAttributeRows = () => {
   }
 
   // No rows left?
-  if (!UI.tableCustomAttributes.rows.length) addCustomAttributeRow();
-
   // No empty rows?
-  if (!tableHasEmptyRows(UI.tableCustomAttributes)) addCustomAttributeRow();
+  if (!UI.tableCustomAttributes.rows.length || !tableHasEmptyRows(UI.tableCustomAttributes)) {
+    addCustomAttributeRow();
+  }
 };
 
 const addCustomAttributeRow = () => {
@@ -244,11 +283,11 @@ const addCustomAttributeRow = () => {
 const injectTableRows = () => {
   // Add rows to Key Qualifier table
   KEY_QUALIFIERS_LIST.forEach((item) => {
-    insertAttributeRow(UI.tableKeyQualifier, item, getIdFromKeyQualifier);
+    insertKeyQualifierRow(UI.tableKeyQualifier, item);
   });
 
   // Add rows to GS1 Data Attributes table
-  AI_LIST.forEach(item => insertAttributeRow(UI.tableGS1Attribute, item, getIdFromAI));
+  AI_LIST.forEach(item => insertAttributeRow(UI.tableGS1Attribute, item));
 
   // Add first row to custom attributes table
   addCustomAttributeRow();
@@ -279,8 +318,6 @@ const validateIdentifier = () => {
   setVisible('img_identifier_verdict', true);
   const valid = parser.validate(UI.inputIdentifierValue.value, ruleName);
   UI.imgIdentifierVerdict.src = `./assets/${valid ? '' : 'in'}valid.svg`;
-
-  return valid;
 };
 
 const setupUI = () => {
@@ -321,10 +358,6 @@ const setupUI = () => {
 
   // Data qualifiers
   UI.checkQualifiers.onclick = () => setVisible('div_key_qualifiers_group', UI.checkQualifiers.checked);
-
-  getElement(getIdFromKeyQualifier(22)).oninput = updateDigitalLink;
-  getElement(getIdFromKeyQualifier(10)).oninput = updateDigitalLink;
-  getElement(getIdFromKeyQualifier(21)).oninput = updateDigitalLink;
 
   // GS1 Attributes
   UI.checkGS1Attributes.onclick = () => {
