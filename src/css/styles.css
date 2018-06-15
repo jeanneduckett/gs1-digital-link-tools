@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  border: none;
+  outline: none;
+}
+
 html, body {
   height: 100%;
 }
@@ -180,13 +185,11 @@ td, th {
 .verdict-icon {
   width: 60px;
   height: auto;
-  border: hidden;
 }
 
 .verdict-icon-small {
   width: 18px;
-  height: auto;
-  border: hidden;
+  height: 18px;
 }
 
 .nav-link {

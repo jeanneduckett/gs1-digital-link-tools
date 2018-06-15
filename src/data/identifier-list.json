@@ -51,7 +51,7 @@
     "code": "415",
     "label": "Global Location Number of the invoicing party",
     "keyQualifiers": [],
-    "ruleName": ""
+    "ruleName": "payTo-value"
   },
   {
     "code": "8003",
@@ -73,7 +73,7 @@
       "10",
       "21"
     ],
-    "ruleName": ""
+    "ruleName": "itip-value"
   },
   {
     "code": "8010",
@@ -89,7 +89,7 @@
     "keyQualifiers": [
       "8017"
     ],
-    "ruleName": ""
+    "ruleName": "gsrnp-value"
   },
   {
     "code": "8018",
@@ -97,6 +97,6 @@
     "keyQualifiers": [
       "8017"
     ],
-    "ruleName": ""
+    "ruleName": "gsrnp-value"
   }
 ]

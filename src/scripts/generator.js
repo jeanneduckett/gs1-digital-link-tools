@@ -1,5 +1,6 @@
 const Qrious = require('qrious');
 
+const parser = require('./parser');
 const {
   getElement,
   setVisible,
@@ -15,9 +16,9 @@ const MAX_LENGTH = 48;
 const DEFAULT_GTIN_VALUE = '9780345418913';
 const QR_SIZE = 180;
 const DOMAINS = {
-  TN_GG: { value: 'tngg', label: 'tn.gg (EVRYTHNG)', url: 'tn.gg' },
+  TN_GG: { value: 'tngg', label: 'dlnkd.tn.gg (EVRYTHNG)', url: 'dlnkd.tn.gg' },
   ID_GS1: { value: 'idgs1org', label: 'id.gs1.org (Canonical)', url: 'id.gs1.org' },
-  CUSTOM: { value: 'custom', label: 'Custom domain...', url: 'domain.example.org' },
+  CUSTOM: { value: 'custom', label: 'Custom domain', url: 'gs1.example.org' },
 };
 const UI = {
   aQrCodeGenerate: getElement('a_qrcode_generate'),
@@ -27,6 +28,8 @@ const UI = {
   checkFormatNumeric: getElement('check_format_numeric'),
   checkGS1Attributes: getElement('check_gs1_data_attributes'),
   checkQualifiers: getElement('check_key_qualifiers'),
+  imgDigitalLinkVerdict: getElement('img_digital_link_verdict'),
+  imgIdentifierVerdict: getElement('img_identifier_verdict'),
   inputIdentifierValue: getElement('input_identifier_value'),
   inputSearchAiList: getElement('input_search_ai_list'),
   selectQrCodeStyle: getElement('select_qr_code_style'),
@@ -132,6 +135,10 @@ const updateDigitalLink = () => {
     digitalLink += `${item[0]}=${item[1]}`;
   });
 
+  const startRule = digitalLink.includes('id.gs1.org') ? 'canonicalGS1webURI' : 'customGS1webURI';
+  const valid = parser.validate(digitalLink, startRule);
+  UI.imgDigitalLinkVerdict.src = `./assets/${valid ? '' : 'in'}valid.svg`;
+
   // Update UI
   UI.spanDigitalLink.innerHTML = digitalLink;
   updateQrCode();
@@ -220,12 +227,14 @@ const addCustomAttributeRow = () => {
   const inputKey = newCell.querySelector('#input_custom_attribute_row_key');
   inputKey.oninput = () => {
     attributeModel.key = inputKey.value;
+    
     updateCustomAttributeRows();
     updateDigitalLink();
   };
   const inputValue = newCell.querySelector('#input_custom_attribute_row_value');
   inputValue.oninput = () => {
     attributeModel.value = inputValue.value;
+    
     updateCustomAttributeRows();
     updateDigitalLink();
   };
@@ -259,6 +268,20 @@ const updateIdentifierValueLabel = () => {
   UI.spanIdentifierLabel.innerHTML = `(${code})`;
 };
 
+const validateIdentifier = () => {
+  const { ruleName } = IDENTIFIER_LIST.find(item => item.code === UI.selectIdentifier.value);
+  if (!ruleName) {
+    setVisible('img_identifier_verdict', false);
+    return;
+  }
+
+  setVisible('img_identifier_verdict', true);
+  const valid = parser.validate(UI.inputIdentifierValue.value, ruleName);
+  UI.imgIdentifierVerdict.src = `./assets/${valid ? '' : 'in'}valid.svg`;
+
+  return valid;
+};
+
 const setupUI = () => {
   // Domain
   UI.selectDomain.onchange = () => {
@@ -277,7 +300,10 @@ const setupUI = () => {
   UI.checkFormatNumeric.onchange = updateDigitalLink;
 
   // Set identifier options
-  UI.inputIdentifierValue.oninput = updateDigitalLink;
+  UI.inputIdentifierValue.oninput = () => {
+    validateIdentifier();
+    updateDigitalLink();
+  };
   UI.inputIdentifierValue.value = DEFAULT_GTIN_VALUE;
 
   UI.selectIdentifier.options.length = 0;
@@ -286,6 +312,7 @@ const setupUI = () => {
   });
   UI.selectIdentifier.value = IDENTIFIER_LIST[1].code;
   UI.selectIdentifier.onchange = () => {
+    validateIdentifier();
     updateDigitalLink();
     updateVisibleKeyQualifiers();
     updateIdentifierValueLabel();
@@ -338,6 +365,7 @@ const setupUI = () => {
   updateDigitalLink();
   updateVisibleKeyQualifiers();
   updateIdentifierValueLabel();
+  validateIdentifier();
 
   console.log('Script loaded!');
 })();
