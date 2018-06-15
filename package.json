@@ -2,15 +2,13 @@
   "name": "gs1-digital-link-tool",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/parcel build src/index.html src/assets/*",
-    "serve": "./node_modules/.bin/parcel src/index.html src/assets/*",
+    "build": "./node_modules/.bin/parcel build src/*.html src/assets/*",
+    "serve": "./node_modules/.bin/parcel src/*.html src/assets/*",
     "lint": "./node_modules/.bin/eslint src/scripts"
   },
   "author": "EVRYTHNG",
   "dependencies": {
     "apg-lib": "^3.2.0",
-    "data": "^0.6.1",
-    "lib": "^3.0.2",
     "parcel-bundler": "^1.8.1",
     "qrious": "^4.0.2",
     "request": "^2.87.0"
