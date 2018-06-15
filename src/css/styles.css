@@ -117,12 +117,12 @@ td, th {
 .scroll-container {
   overflow-y: scroll;
   overflow-x: scroll;
-  width: 700px;
+  /*width: 700px;*/
   height: 800px;
 }
 
 .scroll-wrapper {
-  width: 700px;
+  /*width: 700px;*/
   height: 800px;
 }
 
@@ -213,4 +213,8 @@ td, th {
 .generate-button {
   width: 100px !important;
   margin: auto;
+}
+
+.fork-me {
+  z-index: 99999;
 }
