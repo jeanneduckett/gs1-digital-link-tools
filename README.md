@@ -5,7 +5,7 @@ This project contains an example GS1 Digital Link generator and verifier.
 The verifier uses the `apglib` library to check a GS1 Digital Link for 
 formatting errors.
 
-The site is build with Bootstrap and compiled with Parcel.
+The site uses Bootstrap and is compiled with Parcel.
 
 
 ## Build
@@ -18,4 +18,4 @@ The site is build with Bootstrap and compiled with Parcel.
 ## Deploy
 
 Deploy the `dist` folder after running `npm build` to your hosting service of 
-choice, then go to `index.html` to begin.
+choice, then go to `/index.html` to begin.

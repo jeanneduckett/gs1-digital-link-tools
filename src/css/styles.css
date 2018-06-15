@@ -160,6 +160,11 @@ td, th {
   font-weight: bold;
 }
 
+.scan-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .mw-60p {
   max-width: 60%;
   margin: auto;
@@ -210,7 +215,7 @@ td, th {
   margin: auto;
 }
 
-.generate-button {
+.button-small {
   width: 100px !important;
   margin: auto;
 }
