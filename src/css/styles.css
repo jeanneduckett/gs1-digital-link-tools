@@ -202,5 +202,6 @@ th {
 }
 
 .qr-choice {
-  width: 150px !important;
+  width: 300px !important;
+  margin: auto;
 }
