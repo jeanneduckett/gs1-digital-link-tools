@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "./node_modules/.bin/parcel build src/index.html src/assets/*",
-    "serve": "./node_modules/.bin/parcel src/index.html src/assets/*"
+    "serve": "./node_modules/.bin/parcel src/index.html src/assets/*",
+    "lint": "./node_modules/.bin/eslint src/scripts"
   },
   "author": "EVRYTHNG",
   "dependencies": {
@@ -13,5 +14,12 @@
     "parcel-bundler": "^1.8.1",
     "qrious": "^4.0.2",
     "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1"
   }
 }

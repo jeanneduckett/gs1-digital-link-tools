@@ -25,12 +25,7 @@ table {
   border-width: 0px;
 }
 
-td {
-  padding: 5px;
-  font-size: 0.8rem;
-}
-
-th {
+td, th {
   padding: 5px;
   font-size: 0.8rem;
 }
@@ -49,12 +44,12 @@ th {
 }
 
 .theme-color {
-  color: #3b7bda !important;
+  color: #418cfc !important;
 }
 
 .btn-theme-color {
   color: white !important;
-  background-color: #3b7bda !important;
+  background-color: #418cfc !important;
 }
 
 .start-hidden {
@@ -88,7 +83,7 @@ th {
 }
 
 .blue-underline {
-  background-color: #3b7bda;
+  background-color: #418cfc;
   min-height: 5px;
   height: 5px;
   width: 430px;
@@ -188,6 +183,12 @@ th {
   border: hidden;
 }
 
+.verdict-icon-small {
+  width: 18px;
+  height: auto;
+  border: hidden;
+}
+
 .nav-link {
   padding-bottom: 10px !important;
   padding-top: 10px !important;
@@ -198,10 +199,15 @@ th {
 }
 
 .nav-link.active {
-  border-color: #FFF #FFF #3b7bda !important;
+  border-color: #FFF #FFF #418cfc !important;
 }
 
 .qr-choice {
   width: 300px !important;
+  margin: auto;
+}
+
+.generate-button {
+  width: 100px !important;
   margin: auto;
 }

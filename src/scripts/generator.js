@@ -19,12 +19,37 @@ const DOMAINS = {
   ID_GS1: { value: 'idgs1org', label: 'id.gs1.org (Canonical)', url: 'id.gs1.org' },
   CUSTOM: { value: 'custom', label: 'Custom domain...', url: 'domain.example.org' },
 };
+const UI = {
+  aQrCodeGenerate: getElement('a_qrcode_generate'),
+  canvasQRCode: getElement('canvas_qr_code'),
+  checkCustomAttributes: getElement('check_custom_data_attributes'),
+  checkFormatAlphanumeric: getElement('check_format_alphanumeric'),
+  checkFormatNumeric: getElement('check_format_numeric'),
+  checkGS1Attributes: getElement('check_gs1_data_attributes'),
+  checkQualifiers: getElement('check_key_qualifiers'),
+  inputIdentifierValue: getElement('input_identifier_value'),
+  inputSearchAiList: getElement('input_search_ai_list'),
+  selectQrCodeStyle: getElement('select_qr_code_style'),
+  selectDomain: getElement('select_domain'),
+  selectIdentifier: getElement('select_identifier'),
+  spanDigitalLink: getElement('span_digital_link'),
+  spanIdentifierLabel: getElement('span_identifier_label'),
+  tableCustomAttributes: getElement('table_custom_attributes'),
+  tableGS1Attribute: getElement('table_gs1_data_attributes'),
+  tableKeyQualifier: getElement('table_key_qualifiers'),
+  inputDomainValue: getElement('input_domain_value'),
+};
 
-const customAttributes = [];  // [{ key, value, row }]
+// [{ key, value, row }]
+const customAttributes = [];
 let qrCode;
-let digitalLink, qrFetchTimeout;
+let digitalLink;
 
-const truncate = str => (str.length < MAX_LENGTH) ? str : `${str.substring(0, MAX_LENGTH - 2)}...`;
+const truncate = (str) => {
+  if (str.length < MAX_LENGTH) return str;
+
+  return `${str.substring(0, MAX_LENGTH - 2)}...`;
+};
 
 const getIdFromAI = code => `input_gs1_attribute_${code}`;
 
@@ -33,7 +58,7 @@ const getIdFromKeyQualifier = code => `input_key_qualifier_${code}`;
 const generateClassicQrCode = () => {
   if (!qrCode) {
     qrCode = new Qrious({
-      element: getElement('canvas_qr_code'),
+      element: UI.canvasQRCode,
       size: QR_SIZE,
       value: digitalLink,
       level: 'L',
@@ -43,19 +68,23 @@ const generateClassicQrCode = () => {
   }
 
   qrCode.value = digitalLink;
-}
+};
 
 const updateQrCode = () => {
-  const key = getElement('select_qr_code_style').value;
+  const key = UI.selectQrCodeStyle.value;
   const map = {
     default: generateClassicQrCode,
+    roundedBlueLogo: () => {
+      // Call mashape
+    },
+    // ...
   };
 
   if (map[key]) map[key]();
 };
 
 const mapAlphaNumeric = (code) => {
-  if (!getElement('check_format_alphanumeric').checked) return code;
+  if (!UI.checkFormatAlphanumeric.checked) return code;
 
   return ALPHA_MAP[`${code}`] || code;
 };
@@ -65,12 +94,12 @@ const customAttributesSpecified = () => customAttributes.some(item => item.key &
 const updateDigitalLink = () => {
   // Domain
   const domainKey = Object.keys(DOMAINS)
-    .find(item => DOMAINS[item].value === getElement('select_domain').value);
+    .find(item => DOMAINS[item].value === UI.selectDomain.value);
   const domain = DOMAINS[domainKey];
 
   // Identifier
-  const identifier = IDENTIFIER_LIST.find(item => item.code === getElement('select_identifier').value);
-  const identifierValue = getElement('input_identifier_value').value;
+  const identifier = IDENTIFIER_LIST.find(item => item.code === UI.selectIdentifier.value);
+  const identifierValue = UI.inputIdentifierValue.value;
   digitalLink = `https://${domain.url}/${mapAlphaNumeric(identifier.code)}/${identifierValue}`;
 
   // Key qualifiers
@@ -88,10 +117,10 @@ const updateDigitalLink = () => {
 
   // GS1 Data Attributes
   const gs1Attributes = AI_LIST.filter(item => item.value);
-  gs1Attributes.forEach((item, i) => queryParams.push([item.code, item.value]));
+  gs1Attributes.forEach(item => queryParams.push([item.code, item.value]));
 
   // Custom Data Attributes
-  customAttributes.forEach((item, i) => {
+  customAttributes.forEach((item) => {
     if (!item.key || !item.value) return;
 
     queryParams.push([item.key, item.value]);
@@ -104,7 +133,7 @@ const updateDigitalLink = () => {
   });
 
   // Update UI
-  getElement('span_digital_link').innerHTML = digitalLink;
+  UI.spanDigitalLink.innerHTML = digitalLink;
   updateQrCode();
 };
 
@@ -153,28 +182,26 @@ const tableHasEmptyRows = (table) => {
 };
 
 const updateCustomAttributeRows = () => {
-  const table = getElement('table_custom_attributes');
-  for (let i = 0; i < table.rows.length; i += 1) {
-    const row = table.rows[i];
+  for (let i = 0; i < UI.tableCustomAttributes.rows.length; i += 1) {
+    const row = UI.tableCustomAttributes.rows[i];
     const inputKey = row.querySelector('#input_custom_attribute_row_key');
     const inputValue = row.querySelector('#input_custom_attribute_row_value');
 
     // Delete empty rows
-    if (!inputKey.value && !inputValue.value) table.deleteRow(i);
-  };
+    if (!inputKey.value && !inputValue.value) UI.tableCustomAttributes.deleteRow(i);
+  }
 
   // No rows left?
-  if (!table.rows.length) addCustomAttributeRow();
+  if (!UI.tableCustomAttributes.rows.length) addCustomAttributeRow();
 
   // No empty rows?
-  if (!tableHasEmptyRows(table)) addCustomAttributeRow();
+  if (!tableHasEmptyRows(UI.tableCustomAttributes)) addCustomAttributeRow();
 };
 
 const addCustomAttributeRow = () => {
-  const table = getElement('table_custom_attributes');
-  const nextIndex = table.rows.length;
+  const nextIndex = UI.tableCustomAttributes.rows.length;
 
-  const newRow = table.insertRow(nextIndex);
+  const newRow = UI.tableCustomAttributes.insertRow(nextIndex);
   const newCell = newRow.insertCell(0);
   newCell.innerHTML = `<div class="input-group">
     <input id="input_custom_attribute_row_key" type="text" class="form-control" placeholder="Key...">
@@ -182,23 +209,23 @@ const addCustomAttributeRow = () => {
   </div>`;
 
   // Add data model item
-  const customAttributeModel = {
+  const attributeModel = {
     key: '',
     value: '',
     row: newRow,
   };
-  customAttributes.push(customAttributeModel);
+  customAttributes.push(attributeModel);
 
   // Add listeners
   const inputKey = newCell.querySelector('#input_custom_attribute_row_key');
   inputKey.oninput = () => {
-    customAttributeModel.key = inputKey.value;
+    attributeModel.key = inputKey.value;
     updateCustomAttributeRows();
     updateDigitalLink();
   };
   const inputValue = newCell.querySelector('#input_custom_attribute_row_value');
   inputValue.oninput = () => {
-    customAttributeModel.value = inputValue.value;
+    attributeModel.value = inputValue.value;
     updateCustomAttributeRows();
     updateDigitalLink();
   };
@@ -206,12 +233,12 @@ const addCustomAttributeRow = () => {
 
 const injectTableRows = () => {
   // Add rows to Key Qualifier table
-  const keyQualifierTable = getElement('table_key_qualifiers');
-  KEY_QUALIFIERS_LIST.forEach(item => insertAttributeRow(keyQualifierTable, item, getIdFromKeyQualifier));
+  KEY_QUALIFIERS_LIST.forEach((item) => {
+    insertAttributeRow(UI.tableKeyQualifier, item, getIdFromKeyQualifier);
+  });
 
   // Add rows to GS1 Data Attributes table
-  const gs1AttributeTable = getElement('table_gs1_data_attributes');
-  AI_LIST.forEach(item => insertAttributeRow(gs1AttributeTable, item, getIdFromAI));
+  AI_LIST.forEach(item => insertAttributeRow(UI.tableGS1Attribute, item, getIdFromAI));
 
   // Add first row to custom attributes table
   addCustomAttributeRow();
@@ -222,87 +249,87 @@ const updateVisibleKeyQualifiers = () => {
   KEY_QUALIFIERS_LIST.forEach(item => setRowVisible(item.row, item.value));
 
   // Show relevant key qualifiers for this identifier
-  const currentIdentifier = IDENTIFIER_LIST.find(item => item.code === getElement('select_identifier').value);
-  const visibleRows = KEY_QUALIFIERS_LIST.filter(item => currentIdentifier.keyQualifiers.includes(item.code));
+  const identifier = IDENTIFIER_LIST.find(n => n.code === UI.selectIdentifier.value);
+  const visibleRows = KEY_QUALIFIERS_LIST.filter(n => identifier.keyQualifiers.includes(n.code));
   visibleRows.forEach(item => setRowVisible(item.row, true));
 };
 
 const updateIdentifierValueLabel = () => {
-  const selectIdentifier = getElement('select_identifier');
-  const code = IDENTIFIER_LIST.find(item => item.code === selectIdentifier.value).code;
-  getElement('span_identifier_label').innerHTML = `(${code})`;
+  const { code } = IDENTIFIER_LIST.find(item => item.code === UI.selectIdentifier.value);
+  UI.spanIdentifierLabel.innerHTML = `(${code})`;
 };
 
 const setupUI = () => {
   // Domain
-  const selectDomain = getElement('select_domain');
-  selectDomain.value = DOMAINS.ID_GS1.value;
-  selectDomain.onchange = () => {
-    setVisible('div_domain_wrapper', selectDomain.value === DOMAINS.CUSTOM.value);
+  UI.selectDomain.onchange = () => {
+    setVisible('div_domain_wrapper', UI.selectDomain.value === DOMAINS.CUSTOM.value);
     updateDigitalLink();
   };
 
-  const inputDomainValue = getElement('input_domain_value');
-  inputDomainValue.value = DOMAINS.CUSTOM.url;
-  inputDomainValue.oninput = () => {
-    DOMAINS.CUSTOM.url = inputDomainValue.value;
+  UI.inputDomainValue.value = DOMAINS.CUSTOM.url;
+  UI.inputDomainValue.oninput = () => {
+    DOMAINS.CUSTOM.url = UI.inputDomainValue.value;
     updateDigitalLink();
   };
 
   // Format options
-  getElement('check_format_alphanumeric').onchange = updateDigitalLink;
-  getElement('check_format_numeric').onchange = updateDigitalLink;
+  UI.checkFormatAlphanumeric.onchange = updateDigitalLink;
+  UI.checkFormatNumeric.onchange = updateDigitalLink;
 
   // Set identifier options
-  const inputIdentifierValue = getElement('input_identifier_value');
-  inputIdentifierValue.oninput = updateDigitalLink;
-  inputIdentifierValue.value = DEFAULT_GTIN_VALUE;
+  UI.inputIdentifierValue.oninput = updateDigitalLink;
+  UI.inputIdentifierValue.value = DEFAULT_GTIN_VALUE;
 
-  const selectIdentifier = getElement('select_identifier');
-  selectIdentifier.options.length = 0;
-  IDENTIFIER_LIST.forEach(item => selectIdentifier.options.add(new Option(item.label, item.code)));
-  selectIdentifier.value = IDENTIFIER_LIST[1].code;
-  selectIdentifier.onchange = () => {
+  UI.selectIdentifier.options.length = 0;
+  IDENTIFIER_LIST.forEach((item) => {
+    UI.selectIdentifier.options.add(new Option(item.label, item.code));
+  });
+  UI.selectIdentifier.value = IDENTIFIER_LIST[1].code;
+  UI.selectIdentifier.onchange = () => {
     updateDigitalLink();
     updateVisibleKeyQualifiers();
     updateIdentifierValueLabel();
   };
 
   // Data qualifiers
-  const checkQualifiers = getElement('check_key_qualifiers');
-  checkQualifiers.onclick = () => setVisible('div_key_qualifiers_group', checkQualifiers.checked);
+  UI.checkQualifiers.onclick = () => setVisible('div_key_qualifiers_group', UI.checkQualifiers.checked);
 
   getElement(getIdFromKeyQualifier(22)).oninput = updateDigitalLink;
   getElement(getIdFromKeyQualifier(10)).oninput = updateDigitalLink;
   getElement(getIdFromKeyQualifier(21)).oninput = updateDigitalLink;
 
   // GS1 Attributes
-  const checkGS1Attributes = getElement('check_gs1_data_attributes');
-  checkGS1Attributes.onclick = () => setVisible('div_gs1_data_attributes_group', checkGS1Attributes.checked);
+  UI.checkGS1Attributes.onclick = () => {
+    setVisible('div_gs1_data_attributes_group', UI.checkGS1Attributes.checked);
+  };
 
   // Setup attribute search
-  const inputSearchAiList = getElement('input_search_ai_list');
-  inputSearchAiList.oninput = () => {
+  UI.inputSearchAiList.oninput = () => {
     // Hide all, unless they have a value
     AI_LIST.forEach(item => setRowVisible(item.row, item.value));
 
     // Show those that matched the query
-    const results = searchAiList(inputSearchAiList.value);
+    const results = searchAiList(UI.inputSearchAiList.value);
     results.forEach(item => setRowVisible(item.row, true));
   };
 
   // Custom Attributes
-  const checkCustomAttributes = getElement('check_custom_data_attributes');
-  checkCustomAttributes.onclick = () => setVisible('div_custom_attributes_group', checkCustomAttributes.checked);
+  UI.checkCustomAttributes.onclick = () => {
+    setVisible('div_custom_attributes_group', UI.checkCustomAttributes.checked);
+  };
 
   // QR Code Style
-  const selectQrCodeStyle = getElement('select_qr_code_style');
-  selectQrCodeStyle.options.length = 0;
+  UI.selectQrCodeStyle.options.length = 0;
   Object.keys(QR_CODE_CONFIGS).forEach((item) => {
-    selectQrCodeStyle.options.add(new Option(QR_CODE_CONFIGS[item].label, item));
+    UI.selectQrCodeStyle.options.add(new Option(QR_CODE_CONFIGS[item].label, item));
   });
-  selectQrCodeStyle.value = 'default';
-  selectQrCodeStyle.onchange = updateQrCode;
+  UI.selectQrCodeStyle.value = 'default';
+  UI.selectQrCodeStyle.onchange = () => {
+    const key = UI.selectQrCodeStyle.value;
+    setVisible('a_qrcode_generate', key !== 'default');
+  };
+  setVisible('a_qrcode_generate', false);
+  UI.aQrCodeGenerate.onclick = updateQrCode;
 };
 
 (() => {
