@@ -30,6 +30,10 @@
   flex-grow: 1;
 }
 
+.fb-align-center {
+  align-items: center;
+}
+
 @media only screen and (min-width: 600px) {
   .fg-container {
     padding: 15px;

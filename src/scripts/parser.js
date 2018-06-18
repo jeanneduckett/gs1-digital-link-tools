@@ -10,7 +10,6 @@ const UI = {
   divStats: getElement('div_stats'),
   divTrace: getElement('div_trace'),
   imgVerdict: getElement('img_verdict'),
-  spanVerdictLabel: getElement('span_verdict_label'),
   spanVerdictResult: getElement('span_verdict_result'),
 };
 
@@ -46,7 +45,6 @@ const generateReport = (inputString, startRule) => {
     const traceHtml = parser.trace.toHtmlPage('ascii', 'Parsing details:');
     UI.divTrace.innerHTML = traceHtml;
 
-    UI.spanVerdictLabel.innerHTML = 'The syntax of your GS1 Digital Link is';
     UI.spanVerdictResult.innerHTML = `<strong>${result.success ? 'VALID' : 'INVALID'}</strong>`;
     UI.imgVerdict.src = `./assets/${result.success ? '' : 'in'}valid.svg`;
     UI.divResults.innerHTML = apglib.utils.parserResultToHtml(result);

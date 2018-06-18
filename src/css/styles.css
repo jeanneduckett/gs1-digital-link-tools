@@ -52,9 +52,6 @@ td, th {
   min-height: 5px;
   height: 5px;
   width: 430px;
-  position: absolute;
-  left: 0px;
-  top: 138px;
 }
 
 .subtitle {
@@ -172,6 +169,7 @@ td, th {
   color: #444 !important;
   font-weight: bold;
   font-size: 1.7rem !important;
+  padding-top: 5px;
 }
 
 .verifier-query {
@@ -184,7 +182,7 @@ td, th {
 }
 
 .verdict-icon {
-  width: 60px;
+  width: 40px;
   height: auto;
 }
 
@@ -198,6 +196,9 @@ td, th {
   margin: auto;
 }
 
+#a_verify {
+}
+
 /************************************ Scan ************************************/
 
 .scan-title {
@@ -207,14 +208,15 @@ td, th {
 
 /***************************** Mobile overrides  ******************************/
 @media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+
   .blue-underline {
     background-color: #418cfc;
     min-height: 5px;
     height: 5px;
     width: 330px;
-    position: absolute;
-    left: 0px;
-    top: 138px;
   }
 
   .right-col-top-margin {
@@ -246,5 +248,9 @@ td, th {
 
   .left-gutter {
     margin-left: 0rem !important;   
+  }
+
+  #input_verifier_query {
+    font-size: 1rem;
   }
 }
