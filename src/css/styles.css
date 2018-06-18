@@ -169,7 +169,7 @@ td, th {
 }
 
 .nav-link {
-  font-size: 1.2rem !important;
+  font-size: 1.0rem !important;
 }
 
 .verifier-query {
@@ -269,7 +269,7 @@ td, th {
   }
 
   .left-border {
-    border-left: 0;
+    border-left: 0px;
   }
 
   .left-gutter {
