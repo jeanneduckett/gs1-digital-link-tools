@@ -8,6 +8,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/flex-grid.css"/>
 
     <!-- Material Design for Bootstrap fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
@@ -49,160 +50,139 @@
     </nav>
 
     <!-- App Content -->
-    <div class="container-fluid">
-      <!-- Main experience -->
-      <div class="row mt-3 ml-2">
-        <!-- LEFT COLUMN-->
-        <div class="col-md-6">
+    <div class="fg-container">
+      <!-- LEFT COLUMN -->
+      <div class="fg-col fg-col-half">
+        <div class="fg-col-content">
           <!-- Headings -->
-          <div class="row mt-3">
-            <div class="col">
-              <h2 >Create Your GS1 Digital Link</h2>
-              <div class="blue-underline"></div>
-            </div>
+          <div class="fg-row mt-3">
+            <h2 >Create Your GS1 Digital Link</h2>
+            <div class="blue-underline"></div>
           </div>
 
           <!-- Input form -->
-          <div class="row mt-4">
-            <div class="col">
-              <div class="form-group">
-                <span class="bold">CHOOSE YOUR DOMAIN</span>
-                <select id="select_domain" class="form-control input-width ml-4 tall-dropdown">
-                  <option value="tngg">dlnkd.tn.gg (EVRYTHNG)</option>
-                  <option value="idgs1org">id.gs1.org (Canonical)</option>
-                  <option value="custom">Custom domain</option>
+          <div class="fg-row mt-4">
+            <div class="form-group">
+              <span class="bold">CHOOSE YOUR DOMAIN</span>
+              <select id="select_domain" class="form-control input-width ml-4 tall-dropdown">
+                <option value="tngg">dlnkd.tn.gg (EVRYTHNG)</option>
+                <option value="idgs1org">id.gs1.org (Canonical)</option>
+                <option value="custom">Custom domain</option>
+              </select>
+            </div>
+            <div id="div_domain_wrapper" class="start-hidden">
+              <input id="input_domain_value" type="text" class="form-control input-width ml-4" placeholder="Enter domain">
+            </div>
+          </div>
+          <div class="fg-row mt-4">
+            <div class="form-group">
+              <span class="bold">CHOOSE YOUR FORMAT</span>
+              <div class="form-check mt-2 ml-4">
+                <input id="check_format_alphanumeric" class="form-check-input" type="radio" name="format_radio" value="alphanumeric" checked>
+                <label class="form-check-label" for="check_format_alphanumeric">Use letters where possible</label>
+                <span class="italic light-grey"> (Alphanumeric)</span>
+              </div>
+              <div class="form-check ml-4">
+                <input id="check_format_numeric" class="form-check-input" type="radio" name="format_radio" value="numeric">
+                <label class="form-check-label" for="check_format_numeric">Use only numbers</label>
+                <span class="italic light-grey"> (Numeric)</span>
+              </div>
+            </div>
+          </div>
+          <div class="fg-row">
+              <div class="form-group input-width">
+              <span class="bold">CHOOSE YOUR IDENTIFIER</span>
+              <div class="ml-4">
+                <select id="select_identifier" class="form-control">
+                  <!-- Injected from JS -->
                 </select>
               </div>
-              <div id="div_domain_wrapper" class="start-hidden">
-                <input id="input_domain_value" type="text" class="form-control input-width ml-4" placeholder="Enter domain">
+            </div>
+            <div class="input-group input-width">
+              <div class="input-group-prepend">
+                <span id="span_identifier_label" class="italic"></span>
               </div>
+              <input id="input_identifier_value" type="text" class="form-control ml-2" placeholder="Enter identifier value">
+              <img id="img_identifier_verdict" class="verdict-icon-small ml-2 mt-2">
             </div>
           </div>
-          <div class="row mt-4">
-            <div class="col">
-              <div class="form-group">
-                <span class="bold">CHOOSE YOUR FORMAT</span>
-                <div class="form-check mt-2 ml-4">
-                  <input id="check_format_alphanumeric" class="form-check-input" type="radio" name="format_radio" value="alphanumeric" checked>
-                  <label class="form-check-label" for="check_format_alphanumeric">Use letters where possible</label>
-                  <span class="italic light-grey"> (Alphanumeric)</span>
-                </div>
-                <div class="form-check ml-4">
-                  <input id="check_format_numeric" class="form-check-input" type="radio" name="format_radio" value="numeric">
-                  <label class="form-check-label" for="check_format_numeric">Use only numbers</label>
-                  <span class="italic light-grey"> (Numeric)</span>
-                </div>
-              </div>
+          <div class="fg-row mt-4">
+            <!-- Key qualifiers -->
+            <div class="form-check mt-2">
+              <input id="check_key_qualifiers" type="checkbox" class="form-check-input">
+              <label class="bold" for="check_key_qualifiers">SPECIFY KEY QUALIFIERS</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group input-width">
-                <span class="bold">CHOOSE YOUR IDENTIFIER</span>
-                <div class="ml-4">
-                  <select id="select_identifier" class="form-control">
-                    <!-- Injected from JS -->
-                  </select>
-                </div>
-              </div>
-              <div class="input-group input-width">
-                <div class="input-group-prepend">
-                  <span id="span_identifier_label" class="italic"></span>
-                </div>
-                <input id="input_identifier_value" type="text" class="form-control ml-2" placeholder="Enter identifier value">
-                <img id="img_identifier_verdict" class="verdict-icon-small ml-2 mt-2">
-              </div>
+            <div id="div_key_qualifiers_group" class="start-hidden ml-4">
+              <table id="table_key_qualifiers">
+                <!-- Injected from JS -->
+              </table>
             </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              <!-- Key qualifiers -->
-              <div class="form-check mt-2">
-                <input id="check_key_qualifiers" type="checkbox" class="form-check-input">
-                <label class="bold" for="check_key_qualifiers">SPECIFY KEY QUALIFIERS</label>
-              </div>
-              <div id="div_key_qualifiers_group" class="start-hidden ml-4">
-                <table id="table_key_qualifiers">
-                  <!-- Injected from JS -->
-                </table>
-              </div>
 
-              <!-- GS1 data attributes -->
-              <div class="form-check mt-2">
-                <input id="check_gs1_data_attributes" type="checkbox" class="form-check-input">
-                <label class="bold" for="check_gs1_data_attributes">SPECIFY GS1 DATA ATTRIBUTES</label>
+            <!-- GS1 data attributes -->
+            <div class="form-check mt-2">
+              <input id="check_gs1_data_attributes" type="checkbox" class="form-check-input">
+              <label class="bold" for="check_gs1_data_attributes">SPECIFY GS1 DATA ATTRIBUTES</label>
+            </div>
+            <div id="div_gs1_data_attributes_group" class="start-hidden ml-4">
+              <div class="input-width">
+                <input id="input_search_ai_list" type="text" class="form-control" placeholder="Search AI name or numerical value">
               </div>
-              <div id="div_gs1_data_attributes_group" class="start-hidden ml-4">
-                <div class="input-width">
-                  <input id="input_search_ai_list" type="text" class="form-control" placeholder="Search AI name or numerical value">
-                </div>
-                <table id="table_gs1_data_attributes" class="mt-3">
-                  <!-- Injected from JS -->
-                </table>
-              </div>
+              <table id="table_gs1_data_attributes" class="mt-3">
+                <!-- Injected from JS -->
+              </table>
+            </div>
 
-              <!-- Custom data attributes -->
-              <div class="form-check mt-2">
-                <input id="check_custom_data_attributes" type="checkbox" class="form-check-input">
-                <label class="bold" for="check_custom_data_attributes">SPECIFY CUSTOM DATA ATTRIBUTES</label>
-              </div>
-              <div id="div_custom_attributes_group" class="start-hidden ml-4">
-                <table id="table_custom_attributes">
-                  <!-- Injected from JS -->
-                </table>
-              </div>
+            <!-- Custom data attributes -->
+            <div class="form-check mt-2">
+              <input id="check_custom_data_attributes" type="checkbox" class="form-check-input">
+              <label class="bold" for="check_custom_data_attributes">SPECIFY CUSTOM DATA ATTRIBUTES</label>
+            </div>
+            <div id="div_custom_attributes_group" class="start-hidden ml-4">
+              <table id="table_custom_attributes">
+                <!-- Injected from JS -->
+              </table>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- RIGHT COLUMN-->
-        <div class="col-md-6 left-border">
-          <div class="row right-col-top-margin">
-            <div class="col text-center">
-              <span class="text-center bold">YOUR GS1 DIGITAL LINK</span><br/>
-            </div>
+      <!-- RIGHT COLUMN-->
+      <div class="fg-col fg-col-half left-border text-center">
+        <div class="fg-col-content">
+          <div class="fg-row right-col-top-margin">
+            <span class="text-center bold">YOUR GS1 DIGITAL LINK</span><br/>
           </div>
-          <div class="row">
-            <div class="col text-center mt-2">
-              <span id="span_digital_link" class="digital-link italic"></span>
-              <img id="img_digital_link_verdict" class="verdict-icon-small ml-2">
-            </div>
+          <div class="fg-row">
+            <span id="span_digital_link" class="digital-link italic"></span>
+            <img id="img_digital_link_verdict" class="verdict-icon-small ml-2">
           </div>
-          <div class="row mt-2">
-            <div class="col text-center">
-              <a id="a_run_verifier" class="btn btn-secondary btn-theme-color active button-small" role="button">
-                SEE IN VERIFIER
-              </a>
-            </div>
+          <div class="fg-row mt-2">
+            <a id="a_run_verifier" class="btn btn-secondary btn-theme-color active button-small" role="button">
+              SEE IN VERIFIER
+            </a>
           </div>
-          <div class="row mt-5">
-            <div class="col">
-              <canvas id="canvas_qr_code" class="text-center qr-code"></canvas>
-            </div>
+          <div class="fg-row mt-5">
+            <canvas id="canvas_qr_code" class="text-center qr-code"></canvas>
           </div>
-          <div class="row mt-4" style="display: none">
-            <div class="col">
-              <div class="qr-choice">
-                <span class="bold">QR CODE STYLE</span>
-                <div class="text-center">
-                  <select id="select_qr_code_style" class="form-control">
-                    <!-- Injected from JS -->
-                  </select>
-                </div>
+          <div class="fg-row mt-4" style="display: none">
+            <div class="qr-choice">
+              <span class="bold">QR CODE STYLE</span>
+              <div class="text-center">
+                <select id="select_qr_code_style" class="form-control">
+                  <!-- Injected from JS -->
+                </select>
               </div>
             </div>
           </div>
-          <div class="row mt-2">
-            <div class="col text-center">
-              <a id="a_qrcode_generate" class="btn btn-secondary btn-theme-color active button-small" role="button">GENERATE</a>
-            </div>
+          <div class="fg-row mt-2">
+            <a id="a_qrcode_generate" class="btn btn-secondary btn-theme-color active button-small" role="button">
+              GENERATE
+            </a>
           </div>
-          <div class="row mt-5">
-            <div class="col text-center">
-              <a id="a_experience" class="btn btn-secondary btn-lg btn-theme-color active" role="button" href="https://dashboard.evrythng.com/signup" target="_blank">
-                CREATE A CUSTOM EXPERIENCE
-              </a>
-            </div>
+          <div class="fg-row mt-5">
+            <a id="a_experience" class="btn btn-secondary btn-lg btn-theme-color active" role="button" href="https://dashboard.evrythng.com/signup" target="_blank">
+              CREATE A CUSTOM EXPERIENCE
+            </a>
           </div>
         </div>
       </div>

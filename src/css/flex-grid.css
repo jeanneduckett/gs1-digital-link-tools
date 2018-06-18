@@ -4,22 +4,19 @@
   padding: 10px;
   width: 100%;
   margin: 0px;
-  /*border: solid 2px green;*/
-  margin: 1px;
+  /*border: solid 2px green; margin: 1px; */
 }
 
 .fg-row {
   flex-direction: row;
   flex-wrap: wrap;
-  /*border: solid 2px red;*/
-  margin: 1px;
+  /*border: solid 2px red; margin: 1px; */
 }
 
 .fg-col {
   flex-direction: column;
   max-height: 100%;
-  /*border: solid 2px blue;*/
-  margin: 1px;
+  /*border: solid 2px blue; margin: 1px; */
 }
 
 .fg-col-content {
