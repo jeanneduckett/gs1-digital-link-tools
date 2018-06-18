@@ -1,22 +1,21 @@
 .fg-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   margin: 0px;
-  /*border: solid 2px green; margin: 1px; */
+  border: solid 2px green; margin: 1px; 
 }
 
 .fg-row {
   flex-direction: row;
   flex-wrap: wrap;
-  /*border: solid 2px red; margin: 1px; */
+  border: solid 2px red; margin: 1px; 
 }
 
 .fg-col {
   flex-direction: column;
-  max-height: 100%;
-  /*border: solid 2px blue; margin: 1px; */
+  border: solid 2px blue; margin: 1px; 
 }
 
 .fg-col-content {
@@ -27,12 +26,41 @@
   flex-grow: 1;
 }
 
-.fb-align-center {
+.fg-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 0;
+  padding-left: 10px;
   align-items: center;
+  height: 60px;
+  width: 100%;
+  margin: 0px;
 }
 
-@media only screen and (min-width: 600px) {
+.fg-navbar-fullwidth {
+  max-width: 100%;
+}
+
+.fg-navbar-link {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.fg-navbar-title {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-right: 50px;
+}
+
+/********************************** Mobile ************************************/
+
+@media only screen and (max-width: 600px) {
   .fg-container {
-    padding: 15px;
+    padding: 10px;
+  }
+
+  .fg-navbar {
+    height: 120px;
   }
 }
