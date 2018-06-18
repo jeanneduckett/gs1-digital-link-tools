@@ -17,9 +17,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34536951-10"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-
       gtag('config', 'UA-34536951-10');
     </script>
 
@@ -32,16 +31,21 @@
     </a>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark full-width bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a class="navbar-brand" href="#">
         <img src="assets/evt-logo.png" width="58" height="30" class="d-inline-block align-top" alt="">
         <span class="ml-2 nav-title">GS1 Digital Link Tools</span>
       </a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-        <li class="nav-item active"><a class="nav-link" href="./generator.html">Generator</a></li>
-        <li class="nav-item"><a class="nav-link" href="./verifier.html">Verifier</a></li>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+          <li class="nav-item active"><a class="nav-link" href="./generator.html">Generator</a></li>
+          <li class="nav-item"><a class="nav-link" href="./verifier.html">Verifier</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- App Content -->
@@ -63,14 +67,14 @@
             <div class="col">
               <div class="form-group">
                 <span class="bold">CHOOSE YOUR DOMAIN</span>
-                <select id="select_domain" class="form-control w-50 ml-4 tall-dropdown">
+                <select id="select_domain" class="form-control input-width ml-4 tall-dropdown">
                   <option value="tngg">dlnkd.tn.gg (EVRYTHNG)</option>
                   <option value="idgs1org">id.gs1.org (Canonical)</option>
                   <option value="custom">Custom domain</option>
                 </select>
               </div>
               <div id="div_domain_wrapper" class="start-hidden">
-                <input id="input_domain_value" type="text" class="form-control w-50 ml-4" placeholder="Enter domain">
+                <input id="input_domain_value" type="text" class="form-control input-width ml-4" placeholder="Enter domain">
               </div>
             </div>
           </div>
@@ -93,7 +97,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <div class="form-group w-50">
+              <div class="form-group input-width">
                 <span class="bold">CHOOSE YOUR IDENTIFIER</span>
                 <div class="ml-4">
                   <select id="select_identifier" class="form-control">
@@ -101,7 +105,7 @@
                   </select>
                 </div>
               </div>
-              <div class="input-group w-50">
+              <div class="input-group input-width">
                 <div class="input-group-prepend">
                   <span id="span_identifier_label" class="italic"></span>
                 </div>
@@ -129,7 +133,7 @@
                 <label class="bold" for="check_gs1_data_attributes">SPECIFY GS1 DATA ATTRIBUTES</label>
               </div>
               <div id="div_gs1_data_attributes_group" class="start-hidden ml-4">
-                <div class="w-50">
+                <div class="input-width">
                   <input id="input_search_ai_list" type="text" class="form-control" placeholder="Search AI name or numerical value">
                 </div>
                 <table id="table_gs1_data_attributes" class="mt-3">
@@ -151,13 +155,8 @@
           </div>
         </div>
 
-        <!-- Separator -->
-        <div class="col-md-1 separator-wrapper">
-          <div class="separator"></div>
-        </div>
-
         <!-- RIGHT COLUMN-->
-        <div class="col-md-5">
+        <div class="col-md-6 left-border">
           <div class="row right-col-top-margin">
             <div class="col text-center">
               <span class="text-center bold">YOUR GS1 DIGITAL LINK</span><br/>

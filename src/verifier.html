@@ -17,9 +17,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34536951-10"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-
       gtag('config', 'UA-34536951-10');
     </script>
 
@@ -33,27 +32,32 @@
     
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a class="navbar-brand" href="#">
-        <img src="assets/evt-logo.png" width="58" class="d-inline-block align-top" alt="">
+        <img src="assets/evt-logo.png" width="58" height="30" class="d-inline-block align-top" alt="">
         <span class="ml-2 nav-title">GS1 Digital Link Tools</span>
       </a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="./generator.html">Generator</a></li>
-        <li class="nav-item active"><a class="nav-link" href="./verifier.html">Verifier</a></li>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbar-content">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./generator.html">Generator</a></li>
+          <li class="nav-item active"><a class="nav-link" href="./verifier.html">Verifier</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- App Content -->
     <div class="container-fluid">
       <div class="blue-underline"></div>
       <!-- Main experience -->
-      <div class="row ml-2">
+      <div class="row left-gutter">
         <div class="col-md-12">
           <!-- Two columns -->
           <div class="row mt-3">
             <!-- LEFT COLUMN -->
-            <div class="col-md-5">
+            <div class="col-md-6">
               <!-- Headings -->
               <div class="row mt-3">
                 <div class="col">
@@ -66,13 +70,11 @@
                 <div class="col">
                   <div class="form-group">
                     <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
-                  </div>
-                  <div>
                     <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
                   </div>
                 </div>
               </div>
-              <div class="row mt-4">
+              <div class="row mt-2">
                 <div class="col">
                   <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">Verify</a>
                 </div>
@@ -90,13 +92,8 @@
               </div>
             </div>
 
-            <!-- Separator -->
-            <div class="col-md-1 separator-wrapper">
-              <div class="separator"></div>
-            </div>
-
             <!-- RIGHT COLUMN-->
-            <div class="col-md-6 mt-3">
+            <div class="col-md-6 mt-3 left-border">
               <div class="nav nav-tabs" role="tablist">
                 <a class="nav-item nav-link active" data-toggle="tab" role="tab" href="#tab_results">PARSER RESULTS</a>
                 <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_stats">STATS</a>
