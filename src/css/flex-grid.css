@@ -1,0 +1,29 @@
+.fg-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.fg-row {
+  flex-direction: row;
+  /*border: solid 2px red;*/
+}
+
+.fg-col {
+  /*border: solid 2px blue;*/
+  max-height: 100%;
+}
+
+.fg-col-content {
+  flex-basis: 0;
+}
+
+.fg-col-half {
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .fg-container {
+    padding: 15px;
+  }
+}

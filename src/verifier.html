@@ -8,6 +8,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/flex-grid.css"/>
 
     <!-- Material Design for Bootstrap fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
@@ -26,7 +27,7 @@
   </head>
   <body>
     <!-- GitHub Banner -->
-    <a href="https://github.com/https://github.com/evrythng/gs1-digital-link-tool" target="_blank">
+    <a href="https://github.com/evrythng/gs1-digital-link-tool" target="_blank">
       <img style="position: absolute; top: 0; right: 0; border: 0;" class="fork-me" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
     </a>
     
@@ -49,99 +50,74 @@
     </nav>
 
     <!-- App Content -->
-    <div class="container-fluid">
+    <div class="fg-container">
       <div class="blue-underline"></div>
-      <!-- Main experience -->
-      <div class="row left-gutter">
-        <div class="col-md-12">
-          <!-- Two columns -->
-          <div class="row mt-3">
-            <!-- LEFT COLUMN -->
-            <div class="col-md-6">
-              <!-- Headings -->
-              <div class="row mt-3">
-                <div class="col">
-                  <h2 >Verify Your GS1 Digital Link</h2>
-                </div>
-              </div>
+      <!-- LEFT COLUMN -->
+      <div class="fg-col fg-col-half">
+        <div class="fg-col-content">
+        <!-- Headings -->
+        <div class="fg-row mt-3">
+          <h2 >Verify Your GS1 Digital Link</h2>
+        </div>
 
-              <!-- Input form -->
-              <div class="row mt-4">
-                <div class="col">
-                  <div class="form-group">
-                    <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
-                    <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col">
-                  <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">Verify</a>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <span id="span_verdict_label" class="subtitle-small"></span>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col">
-                  <img id="img_verdict" class="verdict-icon">
-                  <span id="span_verdict_result" class="subtitle-large ml-3"></span>
-                </div>
+        <!-- Input form -->
+        <div class="fg-row mt-4">
+          <div class="form-group">
+            <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
+            <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
+          </div>
+        </div>
+        <div class="fg-row mt-2">
+          <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">Verify</a>
+        </div>
+        <div class="fg-row mt-3">
+          <span id="span_verdict_label" class="subtitle-small"></span>
+        </div>
+        <div class="fg-row mt-2">
+          <img id="img_verdict" class="verdict-icon">
+          <span id="span_verdict_result" class="subtitle-large ml-3"></span>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN-->
+      <div class="fg-col fg-col-half left-border">
+        <div class="fg-col-content">
+        <div class="fg-row">
+          <div class="nav nav-tabs" role="tablist">
+            <a class="nav-item nav-link active" data-toggle="tab" role="tab" href="#tab_results">PARSER RESULTS</a>
+            <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_stats">STATS</a>
+            <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_trace">TRACE</a>
+            <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_grammar">GRAMMAR</a>
+          </div>
+        </div>
+        <div class="fg-row">
+          <!-- Main form -->
+          <div class="tab-content">
+            <!-- Results -->
+            <div id="tab_results" class="tab-pane show active" role="tabpanel">
+              <div class="fg-row mt-4">
+                <div id="div_results" class="results">Nothing yet.</div>
               </div>
             </div>
 
-            <!-- RIGHT COLUMN-->
-            <div class="col-md-6 mt-3 left-border">
-              <div class="nav nav-tabs" role="tablist">
-                <a class="nav-item nav-link active" data-toggle="tab" role="tab" href="#tab_results">PARSER RESULTS</a>
-                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_stats">STATS</a>
-                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_trace">TRACE</a>
-                <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_grammar">GRAMMAR</a>
+            <!-- Stats -->
+            <div id="tab_stats" class="tab-pane show" role="tabpanel">
+              <div class="fg-row mt-4">
+                <div id="div_stats" class="stats">Nothing yet.</div>
               </div>
+            </div>
 
-              <div class="scroll-container">
-                <div class="scroll-wrapper">
-                  <!-- Main form -->
-                  <div class="tab-content">
-                    <!-- Results -->
-                    <div id="tab_results" class="tab-pane show active" role="tabpanel">
-                      <div class="row mt-4">
-                        <div class="col">
-                          <div id="div_results" class="results">Nothing yet.</div>
-                        </div>
-                      </div>
-                    </div>
+            <!-- Trace -->
+            <div id="tab_trace" class="tab-pane show" role="tabpanel">
+              <div class="fg-row mt-4">
+                <div id="div_trace" class="trace">Nothing yet.</div>
+              </div>
+            </div>
 
-                    <!-- Stats -->
-                    <div id="tab_stats" class="tab-pane show" role="tabpanel">
-                      <div class="row mt-4">
-                        <div class="col">
-                          <div id="div_stats" class="stats">Nothing yet.</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Trace -->
-                    <div id="tab_trace" class="tab-pane show" role="tabpanel">
-                      <div class="row mt-4">
-                        <div class="col">
-                          <div id="div_trace" class="trace">Nothing yet.</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Grammar -->
-                    <div id="tab_grammar" class="tab-pane show" role="tabpanel">
-                      <div class="row mt-4">
-                        <div class="col">
-                          <div id="div_grammar" class="grammar">Nothing yet.</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <!-- Grammar -->
+            <div id="tab_grammar" class="tab-pane show" role="tabpanel">
+              <div class="fg-row mt-4">
+                <div id="div_grammar" class="grammar">Nothing yet.</div>
               </div>
             </div>
           </div>

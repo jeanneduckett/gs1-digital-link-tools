@@ -94,7 +94,6 @@ td, th {
   margin-top: 10px;
   overflow-y: scroll;
   overflow-x: scroll;
-  box-shadow: inset 2px 2px 2px 2px #AAA;
   height: 800px;
   display: flex;
 }
@@ -228,7 +227,7 @@ td, th {
 
 .left-border {
   border-left: 2px solid #BBB;
-  padding-left: 30px;
+  padding-left: 10px;
 }
 
 .left-gutter {
@@ -271,7 +270,6 @@ td, th {
 
   .left-border {
     border-left: 0;
-    padding-left: 30px;
   }
 
   .left-gutter {
