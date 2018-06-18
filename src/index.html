@@ -8,6 +8,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/flex-grid.css"/>
 
     <!-- Material Design for Bootstrap fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
@@ -49,86 +50,66 @@
     </nav>
 
     <!-- App Content -->
-    <div class="container-fluid">
+    <div class="fg-container">
       <!-- Main experience -->
-      <div class="row mt-3">
-        <div class="col-md-12">
-          <!-- Title and description -->
-          <div class="row mt-3">
-            <div class="col text-center">
-              <h2 class="landing-title">Get Started with the GS1 Digital Link</h2>
-            </div>
-          </div>
-          <div class="row mt-3 text-center">
-            <span class="subtitle mw-60p">
-              This new standard, launched June 2018, allows physical products to connect to the Web, using an intelligent product identity in the cloud, supporting not just point of sale scanning but consumer interaction and a host of new digital applications.
-            </span>
-          </div>
+      <!-- Title and description -->
+      <div class="fg-row">
+        <div class="fg-row mt-3 text-center">
+          <h2 class="landing-title">Get Started with the GS1 Digital Link</h2>
+        </div>
+        <div class="fg-row mt-3 text-center">
+          <span class="subtitle mw-60p">
+            This new standard, launched June 2018, allows physical products to connect to the Web, using an intelligent product identity in the cloud, supporting not just point of sale scanning but consumer interaction and a host of new digital applications.
+          </span>
+        </div>
+      </div>
 
-          <!-- Two columns -->
-          <div class="row mt-3">
-            <!-- LEFT COLUMN -->
-            <div class="col-md-6 text-center">
-              <div class="row">
-                <div class="col">
-                  <img class="landing-icon" src="assets/build.svg">
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col">
-                  <h3 class="landing-subtitle mt-3">Create Your GS1 Digital Link</h3>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <p class="subtitle-wrapper">
-                    <span class="subtitle">
-                      See how GS1 Digital Links are formatted and what attributes can be included.
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col text-center">
-                  <a id="a_experience" href="./generator.html" class="btn btn-secondary btn-lg btn-theme-color active landing-button" role="button">
-                    OPEN GENERATOR
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT COLUMN -->
-            <div class="col-md-6 text-center left-border">
-              <div class="row">
-                <div class="col">
-                  <img class="landing-icon" src="assets/verify.svg">
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col">
-                  <h3 class="landing-subtitle mt-3">Verify Your GS1 Digital Link</h3>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <p class="subtitle-wrapper">
-                    <span class="subtitle">
-                      Already created a digital link? Check that it is valid with our verifier too.
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col text-center">
-                  <a id="a_experience" href="./verifier.html" class="btn btn-secondary btn-lg btn-theme-color active landing-button" role="button">
-                    OPEN VERIFIER
-                  </a>
-                </div>
-              </div>
-              <div class="row mb-5"/>
-            </div>
+      <!-- LEFT COLUMN -->
+      <div class="fg-col fg-col-half">
+        <div class="text-center">
+          <div class="fg-row">
+            <img class="landing-icon" src="assets/build.svg">
+          </div>
+          <div class="fg-row mt-2">
+            <h3 class="mt-3">Create Your GS1 Digital Link</h3>
+          </div>
+          <div class="fg-row mt-3">
+            <p class="mw-60p">
+              <span class="subtitle">
+                See how GS1 Digital Links are formatted and what attributes can be included.
+              </span>
+            </p>
+          </div>
+          <div class="fg-row text-center">
+            <a id="a_experience" href="./generator.html" class="btn btn-secondary btn-lg btn-theme-color active landing-button" role="button">
+              OPEN GENERATOR
+            </a>
           </div>
         </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="fg-col fg-col-half  left-border">
+        <div class="text-center">
+          <div class="fg-row">
+            <img class="landing-icon" src="assets/verify.svg">
+          </div>
+          <div class="fg-row mt-2">
+            <h3 class="mt-3">Verify Your GS1 Digital Link</h3>
+          </div>
+          <div class="fg-row mt-3">
+            <p class="mw-60p">
+              <span class="subtitle">
+                Already created a digital link? Check that it is valid with our verifier too.
+              </span>
+            </p>
+          </div>
+          <div class="fg-row text-center">
+            <a id="a_experience" href="./verifier.html" class="btn btn-secondary btn-lg btn-theme-color active landing-button" role="button">
+              OPEN VERIFIER
+            </a>
+          </div>
+        <div class="fg-row mb-5"/>
       </div>
     </div>
 

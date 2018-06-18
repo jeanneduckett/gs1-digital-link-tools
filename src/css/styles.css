@@ -1,3 +1,5 @@
+/*********************************** Global ***********************************/
+
 body {
   background-color: white !important;
 }
@@ -10,10 +12,6 @@ body {
 img {
   border: none;
   outline: none;
-}
-
-html, body {
-  height: 100%;
 }
 
 body, h1, h2, h3, h4, h5, h6 {
@@ -35,19 +33,6 @@ td, th {
   font-size: 0.8rem;
 }
 
-.btn-block {
-  background: rgb(50, 159, 214) !important;
-  background-color: rgb(50, 159, 214) !important;
-  color: white;
-}
-
-.qr-code {
-  width: 180px;
-  height: auto;
-  display: block;
-  margin: auto;
-}
-
 .theme-color {
   color: #418cfc !important;
 }
@@ -57,56 +42,9 @@ td, th {
   background-color: #418cfc !important;
 }
 
-.start-hidden {
-  display: none;
-}
-
-.digital-link {
-  color: #999;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.fill {
-  height: 100%;
-  min-height: 100%;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.light-grey {
-  color: #AAA;
-}
-
 .bold {
   font-weight: bold;
   font-size: 1.02rem;
-}
-
-.right-col-top-margin {
-  margin-top: 100px;
-}
-
-.scroll-container {
-  padding-left: 10px;
-  margin-top: 10px;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  height: 800px;
-  display: flex;
-}
-
-.scroll-wrapper {
-  /*width: 700px;*/
-  flex-grow: 1;
-  flex-direction: column;
-}
-
-.tall-dropdown {
-  height: auto !important;
-  overflow: visible !important;
 }
 
 .blue-underline {
@@ -125,20 +63,9 @@ td, th {
   font-size: 1.5rem;
 }
 
-.subtitle-wrapper {
-  max-width: 70%;
-  margin: auto;
-}
-
 .mw-60p {
   max-width: 60%;
   margin: auto;
-}
-
-.landing-icon {
-  width: 80px;
-  height: auto;
-  margin-top: 50px;
 }
 
 .subtitle-small {
@@ -147,11 +74,46 @@ td, th {
   font-size: 1.3rem;
 }
 
-.subtitle-large {
-  font-family: 'Source Sans Pro' !important;
-  color: #444 !important;
+.nav-title {
   font-weight: bold;
-  font-size: 1.7rem !important;
+}
+
+.nav-link {
+  font-size: 1.0rem !important;
+}
+
+.nav-link {
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+}
+
+.nav-link:hover {
+  border-color: #FFF #FFF #a0c6ff !important;
+}
+
+.nav-link.active {
+  border-color: #FFF #FFF #418cfc !important;
+}
+
+.fork-me {
+  z-index: 99999;
+}
+
+.left-border {
+  border-left: 2px solid #BBB;
+  padding-left: 10px;
+}
+
+.input-width {
+  width: 300px !important;
+}
+
+/*********************************** Landing **********************************/
+
+.landing-icon {
+  width: 80px;
+  height: auto;
+  margin-top: 50px;
 }
 
 .landing-title {
@@ -159,17 +121,57 @@ td, th {
   font-weight: bold;
 }
 
-.scan-title {
-  font-size: 1.5rem;
+.landing-button {
+  margin-top: 30px;
+}
+
+/********************************* Generator **********************************/
+
+.qr-code {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.start-hidden {
+  display: none;
+}
+
+.digital-link {
+  color: #999;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
-.nav-title {
-  font-weight: bold;
+.italic {
+  font-style: italic;
 }
 
-.nav-link {
-  font-size: 1.0rem !important;
+.light-grey {
+  color: #AAA;
+}
+
+.right-col-top-margin {
+  margin-top: 100px;
+}
+
+.tall-dropdown {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.button-small {
+  margin: auto;
+}
+
+/********************************** Verifier **********************************/
+
+.verifier-verdict {
+  font-family: 'Source Sans Pro' !important;
+  color: #444 !important;
+  font-weight: bold;
+  font-size: 1.7rem !important;
 }
 
 .verifier-query {
@@ -191,50 +193,19 @@ td, th {
   height: 18px;
 }
 
-.nav-link {
-  padding-bottom: 10px !important;
-  padding-top: 10px !important;
-}
-
-.nav-link:hover {
-  border-color: #FFF #FFF #a0c6ff !important;
-}
-
-.nav-link.active {
-  border-color: #FFF #FFF #418cfc !important;
-}
-
 .qr-choice {
   width: 300px !important;
   margin: auto;
 }
 
-.button-small {
-  margin: auto;
+/************************************ Scan ************************************/
+
+.scan-title {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.fork-me {
-  z-index: 99999;
-}
-
-.input-width {
-  width: 300px !important;
-}
-
-.landing-button {
-  margin-top: 30px;
-}
-
-.left-border {
-  border-left: 2px solid #BBB;
-  padding-left: 10px;
-}
-
-.left-gutter {
-  margin-left: 0.5rem !important;
-}
-
-/* Mobile overrides  */
+/***************************** Mobile overrides  ******************************/
 @media only screen and (max-width: 600px) {
   .blue-underline {
     background-color: #418cfc;
@@ -270,6 +241,7 @@ td, th {
 
   .left-border {
     border-left: 0px;
+    padding-left: 0px;
   }
 
   .left-gutter {
