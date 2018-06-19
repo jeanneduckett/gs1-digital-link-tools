@@ -1,4 +1,6 @@
-.fg-container {
+/********************************* Containers *********************************/
+
+.fg-root-container {
   display: flex;
   flex-wrap: wrap;
   padding: 15px;
@@ -26,6 +28,8 @@
   flex-grow: 1;
 }
 
+/*********************************** Navbar ***********************************/
+
 .fg-navbar {
   display: flex;
   flex-wrap: wrap;
@@ -35,33 +39,49 @@
   height: 60px;
   width: 100%;
   margin: 0px;
+  box-shadow: 0px 2px 1px 1px #999;
 }
 
-.fg-navbar-fullwidth {
-  max-width: 100%;
+.fg-navbar-active {
+  font-weight: bold;
 }
 
 .fg-navbar-link {
   color: white;
   font-size: 1.2rem;
   margin-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: solid 1px rgb(0,0,0,0);
+  border-radius: 4px;
+}
+
+.fg-navbar-link:hover {
+  color: black;
+  text-decoration: none;
+  font-weight: inherit;
+  background-color: white;
+  border: solid 1px white;
+  border-radius: 4px;
 }
 
 .fg-navbar-title {
   color: white;
   font-weight: bold;
   font-size: 1.3rem;
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 /********************************** Mobile ************************************/
 
 @media only screen and (max-width: 600px) {
-  .fg-container {
+  .fg-root-container {
     padding: 10px;
   }
 
   .fg-navbar {
-    height: 120px;
+    height: 100px;
   }
 }
