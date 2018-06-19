@@ -3,6 +3,7 @@ const parser = require('./parser');
 const { getElement } = require('./util');
 
 const DEFAULT_QUERY = 'https://gs1.example.org/gtin/9780345418913/ser/43768';
+
 const UI = {
   aVerify: getElement('a_verify'),
   divGrammar: getElement('div_grammar'),
@@ -17,8 +18,7 @@ const getUrlParam = () => {
 };
 
 const setupUI = () => {
-  const urlParam = getUrlParam();
-  UI.inputVerifierQuery.value = urlParam || DEFAULT_QUERY;
+  UI.inputVerifierQuery.value = getUrlParam() || DEFAULT_QUERY;
 
   UI.aVerify.onclick = () => {
     const inputString = UI.inputVerifierQuery.value;

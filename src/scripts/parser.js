@@ -44,7 +44,8 @@ const generateReport = (inputString, startRule) => {
     UI.divStats.innerHTML = statsHtml;
 
     // Full trace of the parsing...
-    const traceHtml = parser.trace.toHtmlPage('ascii', 'Parsing details:');
+    const traceHtml = parser.trace.toHtmlPage('ascii', 'Parsing details:')
+      .replace('display mode: ASCII', '');
     UI.divTrace.innerHTML = traceHtml;
 
     UI.spanVerdictResult.innerHTML = `<strong>${result.success ? 'VALID' : 'INVALID'}</strong>`;

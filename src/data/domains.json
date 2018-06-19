@@ -1,0 +1,17 @@
+{
+  "TN_GG": {
+    "value": "tngg",
+    "label": "dlnkd.tn.gg (EVRYTHNG)",
+    "url": "dlnkd.tn.gg"
+  },
+  "ID_GS1": {
+    "value": "idgs1org",
+    "label": "id.gs1.org (Canonical)",
+    "url": "id.gs1.org"
+  },
+  "CUSTOM": {
+    "value": "custom",
+    "label": "Custom domain",
+    "url": "gs1.example.org"
+  }
+}
