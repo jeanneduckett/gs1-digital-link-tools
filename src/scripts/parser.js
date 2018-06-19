@@ -5,6 +5,8 @@ const apglib = require('apg-lib');
 const { grammarObject } = require('./grammar');
 const { getElement } = require('./util');
 
+const GRAMMAR = new grammarObject();
+
 const UI = {
   divResults: getElement('div_results'),
   divStats: getElement('div_stats'),
@@ -13,26 +15,26 @@ const UI = {
   spanVerdictResult: getElement('span_verdict_result'),
 };
 
-const validate = (inputString, startRule) => {
+const createParser = () => {
   const parser = new apglib.parser();
+  parser.stats = new apglib.stats();
+  parser.trace = new apglib.trace();
 
-  const grammar = new grammarObject();
+  return parser;
+};
+
+const validate = (inputString, startRule) => {
+  const parser = createParser();
   const inputChars = apglib.utils.stringToChars(inputString);
-  const uriParts = [];
-  const result = parser.parse(grammar, startRule, inputChars, uriParts);
+  const result = parser.parse(GRAMMAR, startRule, inputChars, []);
   return result.success;
 };
 
 const generateReport = (inputString, startRule) => {
   try {
-    const parser = new apglib.parser();
-    parser.stats = new apglib.stats();
-    parser.trace = new apglib.trace();
-    
-    const grammar = new grammarObject();
+    const parser = createParser();
     const inputChars = apglib.utils.stringToChars(inputString);
-    const uriParts = [];
-    const result = parser.parse(grammar, startRule, inputChars, uriParts);
+    const result = parser.parse(GRAMMAR, startRule, inputChars, []);
 
     // Parsing stats...
     let statsHtml = parser.stats.toHtml('ops', 'ops-only stats');

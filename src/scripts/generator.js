@@ -89,11 +89,7 @@ const updateQrCode = () => {
   if (map[key]) map[key]();
 };
 
-const mapAlphaNumeric = (code) => {
-  if (!UI.checkFormatAlphanumeric.checked) return code;
-
-  return ALPHA_MAP[`${code}`] || code;
-};
+const mapAlphaNumeric = code => (UI.checkFormatAlphanumeric.checked && ALPHA_MAP[`${code}`]) || code;
 
 const customAttributesSpecified = () => customAttributes.some(item => item.key && item.value);
 
@@ -267,14 +263,14 @@ const addCustomAttributeRow = () => {
   const inputKey = newCell.querySelector('#input_custom_attribute_row_key');
   inputKey.oninput = () => {
     attributeModel.key = inputKey.value;
-    
+
     updateCustomAttributeRows();
     updateDigitalLink();
   };
   const inputValue = newCell.querySelector('#input_custom_attribute_row_value');
   inputValue.oninput = () => {
     attributeModel.value = inputValue.value;
-    
+
     updateCustomAttributeRows();
     updateDigitalLink();
   };

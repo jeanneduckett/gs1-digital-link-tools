@@ -14,7 +14,7 @@ const getUrlParam = () => {
   if (!search.includes('?url')) return false;
 
   return search.substring(search.indexOf('url=') + 'url='.length);
-}
+};
 
 const setupUI = () => {
   const urlParam = getUrlParam();
