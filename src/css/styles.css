@@ -257,4 +257,9 @@ td, th {
   .landing-bottom-gutter {
     margin-bottom: 20px;
   }
+
+  .fork-me {
+    height: 112px;
+    width: auto;
+  }
 }
