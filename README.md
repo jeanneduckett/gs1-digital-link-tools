@@ -1,4 +1,4 @@
-# digital-link-tool
+# gs1-digital-link-tool
 
 ![preview](src/assets/preview.png)
 
