@@ -71,6 +71,12 @@ td, th {
   font-size: 1.3rem;
 }
 
+.subtitle-xsmall {
+  font-family: 'Source Sans Pro' !important;
+  color: #444 !important;
+  font-size: 0.9rem;
+}
+
 .nav-title {
   font-weight: bold;
 }
@@ -103,6 +109,11 @@ td, th {
 
 .input-width {
   width: 300px !important;
+}
+
+.footer {
+  width: 100%;
+  padding: 5px;
 }
 
 /*********************************** Landing **********************************/
