@@ -102,7 +102,7 @@ td, th {
   z-index: 99999;
 }
 
-.left-border {
+.separator {
   border-left: 2px solid #BBB;
   padding-left: 10px;
 }
@@ -285,9 +285,11 @@ td, th {
     margin: auto;
   }
 
-  .left-border {
+  .separator {
     border-left: 0px;
+    border-top: 2px solid #BBB;
     padding-left: 0px;
+    margin-top: 20px;
   }
 
   #input_verifier_query {
@@ -299,7 +301,11 @@ td, th {
   }
 
   .fork-me {
-    height: 112px;
+    height: 100px;
     width: auto;
+  }
+
+  .input-width {
+    width: 320px !important;
   }
 }

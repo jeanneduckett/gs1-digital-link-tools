@@ -88,7 +88,7 @@
               <div class="form-group input-width">
               <span class="bold">CHOOSE YOUR IDENTIFIER</span>
               <div class="ml-4">
-                <select id="select_identifier" class="form-control">
+                <select id="select_identifier" class="form-control input-width">
                   <!-- Injected from JS -->
                 </select>
               </div>
@@ -142,7 +142,7 @@
       </div>
 
       <!-- RIGHT COLUMN-->
-      <div class="fg-col fg-grow left-border text-center">
+      <div class="fg-col fg-grow separator text-center">
         <div class="fg-col-content">
           <div class="fg-row right-col-top-margin">
             <span class="text-center bold">YOUR GS1 DIGITAL LINK</span><br/>
@@ -157,6 +157,9 @@
             </a>
           </div>
           <div class="fg-row mt-5">
+            <span class="text-center bold">AS A QR CODE</span><br/>
+          </div>
+          <div class="fg-row mt-2">
             <canvas id="canvas_qr_code" class="text-center qr-code"></canvas>
           </div>
           <div class="fg-row mt-4" style="display: none">
