@@ -24,8 +24,12 @@
   flex-basis: 0;
 }
 
-.fg-col-half {
+.fg-grow {
   flex-grow: 1;
+}
+
+.fg-dflex {
+  display: flex;
 }
 
 /*********************************** Navbar ***********************************/
@@ -40,6 +44,14 @@
   width: 100%;
   margin: 0px;
   box-shadow: 0px 2px 1px 1px #999;
+}
+
+.fg-navbar-center {
+  justify-content: center;
+}
+
+.fg-navbar-single-row {
+  height: 60px;
 }
 
 .fg-navbar-active {
@@ -83,5 +95,9 @@
 
   .fg-navbar {
     height: 100px;
+  }
+
+  .fg-navbar-single-row {
+    height: 60px;
   }
 }

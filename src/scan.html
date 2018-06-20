@@ -27,53 +27,83 @@
   </head>
   <body>
     <!-- Navbar -->
-    <div class="fg-navbar bg-dark">
-      <div class="fg-col" style="justify-content: center;"><img src="assets/evt-logo.png" width="70"></div>
+    <div class="fg-navbar fg-navbar-center fg-navbar-single-row bg-dark">
+      <div class="fg-col" style="justify-content: center;"><img src="assets/evt-logo.png" width="90"></div>
     </div>
 
     <!-- App Content -->
     <div class="fg-root-container">
-      <!-- Main experience -->
-      <div class="fg-row mt-3">
-        <div class="fg-col">
-          <!-- Title and description -->
-          <div class="fg-row mt-3 text-center">
-            <h4 class="scan-title">Product Information</h4>
+      <div class="fg-col fg-grow">
+        <!-- Main experience -->
+        <div class="fg-row mt-1 text-center">
+          <!-- Photo, title and description -->
+          <div class="fg-row">
+            <img src="./assets/blank-product.png" class="scan-product-image">
           </div>
-          <div class="fg-row mt-3 text-center">
-            <span class="subtitle-small mw-60p">
-              Some interesting product information here
+          <div class="fg-row">
+            <span id="span_product_name" class="scan-title">Your Product Here</span>
+          </div>
+          <div class="fg-row mt-1">
+            <span class="scan-description mw-60p">
+              This is your very own product landing page.
+              <br/>
+              Below are some examples of what you can dynamically redirect to using your Digital Product Identity.
+              <br/>
+              <a href="https://evrythng.com" target="_blank">Find out more</a>
             </span>
           </div>
         </div>
-      </div>
 
-      <!-- Rewards and Journey -->
-      <div class="fg-row mt-3">
-        <div class="fg-col text-center">
-          <div class="nav nav-tabs" role="tablist">
-            <a class="nav-item nav-link active" data-toggle="tab" role="tab" href="#tab_rewards">REWARDS</a>
-            <a class="nav-item nav-link" data-toggle="tab" role="tab" href="#tab_journey">JOURNEY</a>
-          </div>
-
-          <div class="tab-content">
-            <!-- Rewards -->
-            <div id="tab_rewards" class="tab-pane show active" role="tabpanel">
-              <!-- Content -->
+        <!-- Experiences -->
+        <!-- Top row -->
+        <div class="fg-row fg-dflex">
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-rewards.png">
+              <div class="box-label mt-2">LOYALTY & REWARD PROGRAMS</div>
             </div>
-
-            <!-- Journey -->
-            <div id="tab_journey" class="tab-pane show active" role="tabpanel">
-              <!-- Content -->
+          </div>
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-origin.png">
+              <div class="box-label mt-2">PRODUCT INFORMATION</div>
+            </div>
+          </div>
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-video.png">
+              <div class="box-label mt-2">BRAND CONTENT & MEDIA</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Sign up link -->
-      <div class="fg-row mt-3">
-        <div class="fg-col text-center">
-          <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">SIGN UP TO PERSONALISE</a>
+        <!-- Bottom row -->
+        <div class="fg-row fg-dflex">
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-authentication.png">
+              <div class="box-label mt-2">PROVENANCE & TRACEABILITY</div>
+            </div>
+          </div>
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-brand-protection.png">
+              <div class="box-label mt-2">BRAND PROTECTION & AUTHENTICITY</div>
+            </div>
+          </div>
+          <div class="box-tile">
+            <div class="fg-col">
+              <img class="box-icon" src="./assets/icon-analytics.png">
+              <div class="box-label mt-2">PRODUCT DATA & ANALYTICS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sign up link -->
+        <div class="fg-row mt-3 text-center">
+          <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">
+            SIGN UP TO PERSONALISE
+          </a>
         </div>
       </div>
     </div>

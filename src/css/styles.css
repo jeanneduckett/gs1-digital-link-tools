@@ -211,14 +211,43 @@ td, th {
   margin: auto;
 }
 
-#a_verify {
-}
-
 /************************************ Scan ************************************/
 
 .scan-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
+}
+
+.scan-description {
+  font-size: 1rem;
+}
+
+.box-tile {
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: #EEE;
+  margin: 5px;
+  width: 100px;
+  height: 120px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.box-label {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.box-icon {
+  height: 35px;
+  width: auto;
+}
+
+.scan-product-image {
+  width: 150px;
+  height: auto;
 }
 
 /***************************** Mobile overrides  ******************************/
