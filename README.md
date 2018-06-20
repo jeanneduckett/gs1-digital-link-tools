@@ -1,5 +1,7 @@
 # digital-link-tool
 
+![preview](src/assets/preview.png)
+
 This project contains an example GS1 Digital Link generator and verifier.
 
 The verifier uses the [`apglib`](https://github.com/ldthomas/apg-js2-lib) 
