@@ -116,6 +116,10 @@ td, th {
   padding: 5px;
 }
 
+.form-group {
+  padding-top: 0px;
+}
+
 /*********************************** Landing **********************************/
 
 .landing-icon {
@@ -290,6 +294,10 @@ td, th {
     border-top: 2px solid #BBB;
     padding-left: 0px;
     margin-top: 20px;
+  }
+
+  .separator-landing {
+    border: 0;
   }
 
   #input_verifier_query {
