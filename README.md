@@ -16,7 +16,7 @@ with [Parcel](https://parceljs.org/).
 
 1. `git clone` this repository.
 2. Run `npm i` to install dependencies.
-3. Run `npm run build` to build the site, or `npm run server`.
+3. Run `npm run build` to build the site, or `npm run serve`.
 
 
 ## Deploy
