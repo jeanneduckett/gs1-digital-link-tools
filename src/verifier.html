@@ -51,21 +51,27 @@
         <div class="fg-col-content">
           <!-- Headings -->
           <div class="fg-row mt-3">
-            <h2 >Verify Your GS1 Digital Link</h2>
-            <div class="blue-underline"></div>
+            <div class="fg-col">
+              <h2>Verify Your GS1 Digital Link</h2>
+              <div class="blue-underline"></div>
+            </div>
           </div>
 
           <!-- Input form -->
-          <div class="fg-row mt-2">
-            <div class="form-group">
-              <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
-              <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
+          <div class="fg-row mt-4">
+            <div class="fg-col">
+              <div class="form-group">
+                <span class="bold">ENTER YOUR GS1 DIGITAL LINK</span>  
+                <input id="input_verifier_query" type="text" class="form-control form-control-lg verifier-query" placeholder="Enter GS1 Digital Link">
+              </div>
             </div>
           </div>
-          <div class="fg-row fb-align-center mt-2">
-            <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active" role="button">Verify</a>
-            <img id="img_verdict" class="verdict-icon ml-3">
-            <span id="span_verdict_result" class="verifier-verdict ml-2"></span>
+          <div class="fg-row fg-align-center mt-2">
+            <a id="a_verify" class="btn btn-secondary btn-lg btn-theme-color active btn-fixed-height" role="button">Verify</a>
+            <div class="fg-row mt-1">
+              <img id="img_verdict" class="verdict-icon ml-3" src="./assets/blank.png">
+              <span id="span_verdict_result" class="verifier-verdict ml-2"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -120,7 +126,7 @@
       </div>
     </div>
 
-    <div class="fg-row text-center mt-5 footer">
+    <div class="fg-row fg-center mt-5 footer">
       <span class="subtitle-xsmall">© EVRYTHNG 2018</span>
     </div>
 

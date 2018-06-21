@@ -10,12 +10,14 @@
 }
 
 .fg-row {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   /*border: solid 2px red; margin: 1px; */
 }
 
 .fg-col {
+  display: flex;
   flex-direction: column;
   /*border: solid 2px blue; margin: 1px; */
 }
@@ -28,8 +30,9 @@
   flex-grow: 1;
 }
 
-.fg-dflex {
-  display: flex;
+.fg-center {
+  justify-content: center;
+  text-align: center;
 }
 
 /*********************************** Navbar ***********************************/

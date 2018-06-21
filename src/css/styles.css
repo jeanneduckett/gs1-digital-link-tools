@@ -124,7 +124,7 @@ td, th {
 
 .landing-icon {
   width: 80px;
-  height: auto;
+  height: 80px;
   margin-top: 50px;
 }
 
@@ -181,6 +181,10 @@ td, th {
   margin: auto;
 }
 
+.btn-fixed-height {
+  height: 45px !important;
+}
+
 /********************************** Verifier **********************************/
 
 .verifier-verdict {
@@ -188,10 +192,10 @@ td, th {
   color: #444 !important;
   font-weight: bold;
   font-size: 1.7rem !important;
-  padding-top: 5px;
 }
 
 .verifier-query {
+  width: 550px !important;
   margin: auto;
 }
 
@@ -202,7 +206,7 @@ td, th {
 
 .verdict-icon {
   width: 40px;
-  height: auto;
+  height: 40px;
 }
 
 .verdict-icon-small {
@@ -255,6 +259,7 @@ td, th {
 }
 
 /***************************** Mobile overrides  ******************************/
+
 @media only screen and (max-width: 600px) {
   h2 {
     font-size: 1.2rem;
@@ -276,17 +281,17 @@ td, th {
   }
 
   .mw-60p {
-    margin: auto;
     max-width: 90%;
-  }
-
-  .landing-icon {
-    width: 50px;
+    margin: auto;
   }
 
   .subtitle-wrapper {
     max-width: 90%;
     margin: auto;
+  }
+
+  .verifier-query {
+    width: 350px !important;
   }
 
   .separator {
@@ -316,4 +321,10 @@ td, th {
   .input-width {
     width: 320px !important;
   }
+}
+
+/********************** Bootstrap post-render overrides ***********************/
+
+.bmd-form-group {
+  padding-top: 0px !important;
 }
