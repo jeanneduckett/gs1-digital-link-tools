@@ -255,7 +255,7 @@ td, th {
 
 .scan-product-image {
   width: 150px;
-  height: auto;
+  height: 150px;
 }
 
 /***************************** Mobile overrides  ******************************/
