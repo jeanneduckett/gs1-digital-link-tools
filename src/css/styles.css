@@ -114,6 +114,7 @@ td, th {
 .footer {
   width: 100%;
   padding: 5px;
+  text-decoration: underline;
 }
 
 .form-group {
@@ -217,6 +218,17 @@ td, th {
 .qr-choice {
   width: 300px !important;
   margin: auto;
+}
+
+.verifier-results-container {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.scrollx {
+  overflow-x: auto;
 }
 
 /************************************ Scan ************************************/
