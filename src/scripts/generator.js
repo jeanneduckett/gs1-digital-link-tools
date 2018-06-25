@@ -38,7 +38,7 @@ const UI = {
   selectQrCodeStyle: getElement('select_qr_code_style'),
   selectDomain: getElement('select_domain'),
   selectIdentifier: getElement('select_identifier'),
-  spanDigitalLink: getElement('span_digital_link'),
+  textareaDigitalLink: getElement('textarea_digital_link'),
   spanIdentifierLabel: getElement('span_identifier_label'),
   tableCustomAttributes: getElement('table_custom_attributes'),
   tableGS1Attribute: getElement('table_gs1_data_attributes'),
@@ -130,7 +130,7 @@ const updateDigitalLink = () => {
   UI.imgDigitalLinkVerdict.src = `./assets/${valid ? '' : 'in'}valid.svg`;
 
   // Update UI
-  UI.spanDigitalLink.innerHTML = digitalLink;
+  UI.textareaDigitalLink.innerHTML = digitalLink;
   updateQrCode();
 };
 
