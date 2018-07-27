@@ -2,7 +2,7 @@
   "name": "gs1-digital-link-tool",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/parcel build src/*.html src/assets/*",
+    "build": "./node_modules/.bin/parcel build src/*.html src/assets/* _redirects",
     "serve": "./node_modules/.bin/parcel src/*.html src/assets/*",
     "lint": "./node_modules/.bin/eslint src/scripts"
   },
