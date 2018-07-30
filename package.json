@@ -2,10 +2,12 @@
   "name": "gs1-digital-link-tool",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/parcel build src/*.html src/assets/* && npm run add-redirects",
-    "serve": "./node_modules/.bin/parcel src/*.html src/assets/*",
+    "clean": "rm -rf .cache dist",
+    "parcel-build": "./node_modules/.bin/parcel build src/*.html src/assets/*",
+    "parcel-serve": "./node_modules/.bin/parcel src/*.html src/assets/*",
     "lint": "./node_modules/.bin/eslint src/scripts",
-    "add-redirects": "echo '/* /src/index.html 301' > dist/_redirects"
+    "add-redirects": "echo '/* /index.html 301' > dist/_redirects",
+    "build": "npm run clean && npm run parcel-build && npm run add-redirects"
   },
   "author": "EVRYTHNG",
   "dependencies": {
