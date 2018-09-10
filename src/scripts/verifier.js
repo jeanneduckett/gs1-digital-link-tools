@@ -2,7 +2,7 @@ const { grammarObject } = require('./grammar');
 const parser = require('./parser');
 const { getElement } = require('./util');
 
-const DEFAULT_QUERY = 'https://gs1.example.org/gtin/9780345418913/ser/43768';
+const DEFAULT_QUERY = 'https://gs1.example.org/gtin/9780345418913';
 
 const UI = {
   aVerify: getElement('a_verify'),
