@@ -1,6 +1,8 @@
 # GS1 Digital Link tools
 
-![preview](https://evrythng.com/wp-content/uploads/Search_results_-_Google_Drive-768x363.png)
+<p align="center">
+  <img src ="https://evrythng.com/wp-content/uploads/Search_results_-_Google_Drive-768x363.png" />
+</p>
 
 This project provides a number of tools for the [GS1 Digital Link standard](https://evrythng.com/upgrading-the-barcode-to-the-web-gs1-digital-link/), the standard that upgrades the barcode to the Web! The tools offer an ideal playground to experiment with Digital Links with a JavaScript generator and a verifier.
 
