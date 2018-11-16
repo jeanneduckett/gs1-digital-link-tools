@@ -9,7 +9,7 @@
   "author": "EVRYTHNG",
   "dependencies": {
     "apg-lib": "^3.2.0",
-    "parcel-bundler": "^1.8.1",
+    "parcel-bundler": "^1.10.3",
     "qrious": "^4.0.2",
     "request": "^2.87.0"
   },
